@@ -1,0 +1,10 @@
+Packages
+.build
+xcuserdata
+*.xcodeproj
+DerivedData/
+.DS_Store
+.idea/
+config.plist
+*.sqlite3
+*.swp
