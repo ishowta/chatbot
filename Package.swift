@@ -28,7 +28,9 @@ let package = Package(
     ],
     targets: [
         .target(name: "Bot", dependencies: ["SQLite", "PythonKit", "Regex", "Logging"]),
-        .target(name: "Interfaces", dependencies: ["Bot", "Swifter", "Just", "Logging"]),
-        .testTarget(name: "AppTests", dependencies: ["Interfaces", "Bot"])
+        .target(name: "Viber", dependencies: ["Swifter", "Just", "Logging"], path: "Sources/Library/Viber"),
+        .target(name: "Interfaces", dependencies: ["Bot", "Swifter", "Just", "Logging", "Viber"]),
+        .target(name: "Run", dependencies: ["Interfaces"]),
+        .testTarget(name: "AppTests", dependencies: ["Interfaces", "Bot", "Viber"])
     ]
 )

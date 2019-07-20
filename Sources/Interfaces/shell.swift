@@ -6,9 +6,9 @@ public class Shell: Interface {
         let bot = Bot(userRawId: "Shell.test")
         while true {
             print("user: ", terminator: "")
-            guard let user_message = readLine() else { break }
-            let bot_messages: [String] = bot.talk(user_message)
-            for message in bot_messages {
+            guard let userMessage = readLine() else { break }
+            let botMessages = bot.talk(userMessage)
+            for message in botMessages {
                 print("bot: \(message)")
             }
         }

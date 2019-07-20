@@ -21,7 +21,7 @@ open class Bot {
     let Users = Table("Users")
     let Plans = Table("Plans")
 
-    /// 一回の会話を行う
+    /// 初期化
     ///
     /// - Parameter userRawId: ユーザーを識別するためのユニークなID
     public init(userRawId: String) {
