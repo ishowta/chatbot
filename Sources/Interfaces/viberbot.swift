@@ -45,14 +45,14 @@ public class ViberBot: Interface {
                             )
                         }
                     case .Picture, .Video, .File, .Sticker, .Contact, .Url:
-                        logger.info("Not impl callback message")
+                        logger.info("Does not support this message type.")
                     }
                     return HttpResponse.ok(.text(""))
-                case .Subscribed, .Unsubscribed, .ConversationStarted, .Delivered, .Seen, .Failed:
-                    logger.info("Not impl callback")
+                case .Subscribed, .Unsubscribed, .ConversationStarted, .Delivered, .Seen, .Failed, .Action:
+                    logger.info("Does not support this callback.")
                     return HttpResponse.ok(.text(""))
                 case .Webhook:
-                    logger.info("Accept webhook")
+                    logger.info("Accept webhook.")
                     return HttpResponse.ok(.text(""))
                 }
             } else {

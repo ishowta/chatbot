@@ -50,7 +50,7 @@ open class Viber {
     
     public struct TextMessage: ViberMessage {
         public let text: String
-
+        
         public init(text: String) {
             self.text = text
         }
@@ -60,7 +60,7 @@ open class Viber {
         public let text: String
         public let media: String
         public let thumbnail: String?
-
+        
         public init(text: String, media: String, thumbnail: String?) {
             self.text = text
             self.media = media
@@ -73,7 +73,7 @@ open class Viber {
         public let size: Int
         public let duration: Int?
         public let thumbnail: String?
-
+        
         public init(media: String, size: Int, duration: Int?, thumbnail: String?) {
             self.media = media
             self.size = size
@@ -86,7 +86,7 @@ open class Viber {
         public let media: String
         public let size: Int
         public let filename: String
-
+        
         public init(media: String, size: Int, filename: String) {
             self.media = media
             self.size = size
@@ -96,7 +96,7 @@ open class Viber {
     
     public struct ContactMessage: ViberMessage {
         public let contact: ViberAPI.Contact
-
+        
         public init(contact: ViberAPI.Contact) {
             self.contact = contact
         }
@@ -104,7 +104,7 @@ open class Viber {
     
     public struct LocationMessage: ViberMessage {
         public let location: ViberAPI.Location
-
+        
         public init(location: ViberAPI.Location) {
             self.location = location
         }
@@ -112,7 +112,7 @@ open class Viber {
     
     public struct URLMessage: ViberMessage {
         public let URL: String
-
+        
         public init(URL: String) {
             self.URL = URL
         }
@@ -120,7 +120,7 @@ open class Viber {
     
     public struct StickerMessage: ViberMessage {
         public let sticker_id: Int
-
+        
         public init(sticker_id: Int) {
             self.sticker_id = sticker_id
         }
@@ -129,7 +129,7 @@ open class Viber {
     public struct CarouselMessage: ViberMessage {
         public let rich_media: ViberAPI.RichMedia
         public let alt_text: String?
-
+        
         public init(rich_media: ViberAPI.RichMedia, alt_text: String?) {
             self.rich_media = rich_media
             self.alt_text = alt_text
@@ -138,7 +138,7 @@ open class Viber {
     
     open func setWebhook(
         callbackUrl: String,
-        receiveEventTypeList: [ViberAPI.EventType]? = nil,
+        receiveEventTypeList: [ViberAPIEventType]? = nil,
         hasReceiveName: Bool = false,
         hasReceivePhoto: Bool = false,
         _ completion: @escaping (Error?) -> Void

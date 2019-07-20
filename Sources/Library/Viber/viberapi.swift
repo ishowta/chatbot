@@ -41,12 +41,13 @@ public enum ViberAPIMessageType: String, Codable {
 public enum ViberAPIEventType: String, Codable {
     case Subscribed = "subscribed"
     case Unsubscribed = "unsubscribed"
+    case Webhook = "webhook"
     case ConversationStarted = "conversation_started"
+    case Action = "action"
     case Delivered = "delivered"
     case Seen = "seen"
     case Failed = "failed"
     case Message = "message"
-    case Webhook = "webhook"
 }
 
 /// Viber any content message protocol
@@ -155,23 +156,14 @@ open class ViberAPI {
         }
     }
     
-    public enum EventType: String, Codable {
-        case Delivered = "delivered"
-        case Seen = "seen"
-        case Failed = "failed"
-        case Subscribed = "subscribed"
-        case Unsubscribed = "unsubscribed"
-        case ConversationStarted = "conversation_started"
-    }
-    
     // Webhook types
     
     public struct SetWebhookRequest: Codable {
         public let url: String
-        public let event_types: [EventType]?
+        public let event_types: [ViberAPIEventType]?
         public let send_name: Bool?
         public let send_photo: Bool?
-        public init(url: String, event_types: [EventType]? = nil, send_name: Bool? = nil, send_photo: Bool? = nil) {
+        public init(url: String, event_types: [ViberAPIEventType]? = nil, send_name: Bool? = nil, send_photo: Bool? = nil) {
             self.url = url; self.event_types = event_types; self.send_name = send_name; self.send_photo = send_photo
         }
     }
@@ -180,7 +172,7 @@ open class ViberAPI {
         public let status: Int
         public let status_message: String
         public let chat_hostname: String
-        public let event_types: [EventType]?
+        public let event_types: [ViberAPIEventType]?
     }
     
     // Message types
@@ -747,6 +739,9 @@ open class ViberAPI {
             return try! JSONDecoder().decode(ViberAPI.MessageCallback.self, from: data)
         case .Webhook:
             return try! JSONDecoder().decode(ViberAPI.WebhookCallback.self, from: data)
+        case .Action:
+            logger.warning("Does not support Action callback.")
+            return nil
         }
     }
 }
