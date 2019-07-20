@@ -2,7 +2,6 @@ import Bot
 import Dispatch
 import Foundation
 import Just
-import Logging
 import Swifter
 import Viber
 

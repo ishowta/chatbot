@@ -33,6 +33,8 @@
 
 /* Begin PBXBuildFile section */
 		76A3A3E722E3AEF400FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A3E622E3AEEF00FCB77C /* config.plist */; };
+		76A3A3E922E3B23A00FCB77C /* domainselector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3E822E3B23A00FCB77C /* domainselector.swift */; };
+		76A3A3EA22E3B23A00FCB77C /* domainselector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3E822E3B23A00FCB77C /* domainselector.swift */; };
 		OBJ_182 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* AppTests.swift */; };
 		OBJ_184 /* Interfaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Interfaces::Product" /* Interfaces.framework */; };
 		OBJ_185 /* Viber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Viber::Product" /* Viber.framework */; };
@@ -516,6 +518,7 @@
 
 /* Begin PBXFileReference section */
 		76A3A3E622E3AEEF00FCB77C /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		76A3A3E822E3B23A00FCB77C /* domainselector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = domainselector.swift; sourceTree = "<group>"; };
 		"Just::Just::Product" /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* XcodeColorsLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeColorsLogFormatter.swift; sourceTree = "<group>"; };
 		OBJ_102 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
@@ -1258,6 +1261,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_10 /* Recognizer */,
+				76A3A3E822E3B23A00FCB77C /* domainselector.swift */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -1713,6 +1717,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				76A3A3E922E3B23A00FCB77C /* domainselector.swift in Sources */,
 				OBJ_182 /* AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1729,6 +1734,7 @@
 				OBJ_226 /* pm_actor.swift in Sources */,
 				OBJ_227 /* pm_generator.swift in Sources */,
 				OBJ_228 /* pm_recognizer.swift in Sources */,
+				76A3A3EA22E3B23A00FCB77C /* domainselector.swift in Sources */,
 				OBJ_229 /* weatherreporter.swift in Sources */,
 				OBJ_230 /* wr_actor.swift in Sources */,
 				OBJ_231 /* wr_generator.swift in Sources */,
