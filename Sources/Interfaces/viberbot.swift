@@ -51,6 +51,9 @@ public class ViberBot: Interface {
                 case .Subscribed, .Unsubscribed, .ConversationStarted, .Delivered, .Seen, .Failed:
                     logger.info("Not impl callback")
                     return HttpResponse.ok(.text(""))
+                case .Webhook:
+                    logger.info("Accept webhook")
+                    return HttpResponse.ok(.text(""))
                 }
             } else {
                 return HttpResponse.badRequest(nil)

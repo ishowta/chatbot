@@ -42,6 +42,7 @@ public enum ViberAPIEventType: String, Codable {
     case Seen = "seen"
     case Failed = "failed"
     case Message = "message"
+    case Webhook = "webhook"
 }
 
 /// Viber any content message protocol
@@ -590,6 +591,13 @@ open class ViberAPI {
         public let message: UserMessage
     }
     
+    public struct WebhookCallback: ViberAPICallback {
+        public let event: ViberAPIEventType = ViberAPIEventType.Webhook
+        public let timestamp: Int64
+        public let message_token: Int64
+        public let chat_hostname: String
+    }
+    
     // Functions
     
     open func setWebhook(request: SetWebhookRequest, _ completion: @escaping (Result<SetWebhookResponse, Error>) -> Void) {
@@ -733,6 +741,8 @@ open class ViberAPI {
             return try! JSONDecoder().decode(ViberAPI.FailedCallback.self, from: data)
         case .Message:
             return try! JSONDecoder().decode(ViberAPI.MessageCallback.self, from: data)
+        case .Webhook:
+            return try! JSONDecoder().decode(ViberAPI.WebhookCallback.self, from: data)
         }
     }
 }
