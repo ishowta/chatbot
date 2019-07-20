@@ -12,12 +12,6 @@ import Swifter
 
 let logger = Logger(label: "jp.ac.tsukuba.cs.mibel.chatbot.viberapi")
 
-func dump<T>(_ value: T) -> String {
-    var tmp = ""
-    dump(value, to: &tmp)
-    return tmp
-}
-
 extension Encodable {
     func toDictionary() -> [String: Any]? {
         guard let data = try? JSONEncoder().encode(self) else { return nil }
@@ -27,7 +21,7 @@ extension Encodable {
 }
 
 private func decode<T>(_ dict: NSDictionary, _ modelType: T.Type) -> T where T: Decodable {
-    logger.info("decode \(dump(dict)) by \(T.self)")
+    logger.info("decode \(dict) by \(T.self)")
     let data = try! JSONSerialization.data(withJSONObject: dict)
     return try! JSONDecoder().decode(modelType, from: data)
 }
