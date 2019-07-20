@@ -1,9 +1,13 @@
 echo '(0/3) run install KNP script'
 
-INSTALL_PATH=/usr/local/
+if [ $# -ne 1 ]; then
+  echo "require install path"
+  exit 1
+fi
+INSTALL_PATH=$1
+#INSTALL_PATH=/usr/local/
 #INSTALL_PATH=$(cd $(dirname $0); pwd)/bin
 echo "Install path: $INSTALL_PATH"
-
 mkdir build
 cd build
 
