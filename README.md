@@ -14,6 +14,10 @@
     - `sudo ./install_knp.sh`
     - add path to bin and lib
 1. Copy `./config-sample.plist` to `./config.plist` and fill it
+
+## Update package
+1. Edit Package.swift
+1. If you use XCode, type `swift package generate-xcodeproj`
 1. If you use XCode, add `config.plist` to `Copy Bundle Resource Phase` for each target using config
 
 ## Run
@@ -83,3 +87,4 @@
 - Refactoring
 - Make documentation
 - Viber InterfaceがSIGINTに反応してくれないのを治す
+- `Copy Bundle Resource Phase`が毎回リセットされるのをどうにかする
