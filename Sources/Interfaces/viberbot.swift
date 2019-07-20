@@ -9,6 +9,16 @@ import Viber
 public class ViberBot: Interface {
     static let viber = Viber(token: config.viber.token, name: config.viber.name)
     
+    static func talk(userRawId: String, userMessage: String) -> [String] {
+        let bot = Bot(userRawId: userRawId)
+        logger.info("user: \(userMessage)")
+        let botMessages: [String] = bot.talk(userMessage)
+        for message in botMessages {
+            logger.info("bot: \(message)")
+        }
+        return botMessages
+    }
+    
     public static func run() {
         let server = HttpServer()
         server["/"] = { request in
@@ -42,16 +52,18 @@ public class ViberBot: Interface {
                     logger.info("Not impl callback")
                     return HttpResponse.ok(.text(""))
                 }
+            } else {
+                return HttpResponse.badRequest(nil)
             }
         }
         let semaphore = DispatchSemaphore(value: 0)
         do {
             try server.start(config.viber.port)
             let portNumber = try server.port()
-            logger.info("Server has started ( port = \(portNumber) ). Try to connect now...")
-            
+            logger.info("Server has started ( port = \(portNumber) ).")
             logger.info("Challenge set webhook after 3 seconds.")
             sleep(3)
+            logger.info("try...")
             viber.setWebhook(callbackUrl: config.viber.url) { res in
                 switch res {
                 case .none:
@@ -61,6 +73,7 @@ public class ViberBot: Interface {
                     if let error = error as? Viber.ViberError {
                         logger.warning("Error code: \(error.code) Error message: \(error.message)")
                     }
+                    semaphore.signal()
                 }
             }
             
@@ -69,15 +82,5 @@ public class ViberBot: Interface {
             print("Server start error: \(error)")
             semaphore.signal()
         }
-    }
-    
-    static func talk(userRawId: String, userMessage: String) -> [String] {
-        let bot = Bot(userRawId: userRawId)
-        logger.info("user: \(userMessage)")
-        let botMessages: [String] = bot.talk(userMessage)
-        for message in botMessages {
-            logger.info("bot: \(message)")
-        }
-        return botMessages
     }
 }

@@ -1,10 +1,9 @@
+import Foundation
 import Interfaces
 
-switch CONFIG["interface"] as! String {
-case "shell":
+switch config.interface {
+case .Shell:
     Shell.run()
-case "viberbot":
+case .ViberBot:
     ViberBot.run()
-default:
-    fatalError("インターフェイスが指定されていません。")
 }

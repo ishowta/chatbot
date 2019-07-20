@@ -4,14 +4,14 @@
 <dict>
 	<key>interface</key>
 	<string></string>
-	<key>Viber</key>
+	<key>viber</key>
 	<dict>
 		<key>url</key>
 		<string></string>
 		<key>name</key>
 		<string></string>
 		<key>port</key>
-		<string></string>
+		<integer>0</integer>
 		<key>token</key>
 		<string></string>
 	</dict>

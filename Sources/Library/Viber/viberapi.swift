@@ -79,16 +79,31 @@ open class ViberAPI {
     public struct Sender: Codable {
         public let name: String
         public let avatar: String?
+        
+        public init(name: String, avatar: String?) {
+            self.name = name
+            self.avatar = avatar
+        }
     }
     
     public struct Contact: Codable {
         public let name: String
         public let phone_number: String
+        
+        public init(name: String, phone_number: String) {
+            self.name = name
+            self.phone_number = phone_number
+        }
     }
     
     public struct Location: Codable {
         public let lat: String
         public let lon: String
+        
+        public init(lat: String, lon: String) {
+            self.lat = lat
+            self.lon = lon
+        }
     }
     
     public struct Button: Codable {
@@ -103,14 +118,36 @@ open class ViberAPI {
         public let Image: String
         public let BgColor: String
         public let Silent: Bool
+        
+        public init(Columns: Int, Rows: Int, ActionType: String, ActionBody: String, Text: String, TextSize: String, TextVAlign: String, TextHAlign: String, Image: String, BgColor: String, Silent: Bool) {
+            self.Columns = Columns
+            self.Rows = Rows
+            self.ActionType = ActionType
+            self.ActionBody = ActionBody
+            self.Text = Text
+            self.TextSize = TextSize
+            self.TextVAlign = TextVAlign
+            self.TextHAlign = TextHAlign
+            self.Image = Image
+            self.BgColor = BgColor
+            self.Silent = Silent
+        }
     }
     
     public struct RichMedia: Codable {
-        public let `Type`: String = "rich_media"
+        public let `Type`: String
         public let ButtonsGroupColumns: Int
         public let ButtonsGroupRows: Int
         public let BgColor: String
         public let Buttons: [Button]
+        
+        public init(type: String = "rich_media", ButtonsGroupColumns: Int, ButtonsGroupRows: Int, BgColor: String, Buttons: [Button]) {
+            `Type` = type
+            self.ButtonsGroupColumns = ButtonsGroupColumns
+            self.ButtonsGroupRows = ButtonsGroupRows
+            self.BgColor = BgColor
+            self.Buttons = Buttons
+        }
     }
     
     public enum EventType: String, Codable {
@@ -137,6 +174,7 @@ open class ViberAPI {
     public struct SetWebhookResponse: Codable {
         public let status: Int
         public let status_message: String
+        public let chat_hostname: String
         public let event_types: [EventType]?
     }
     
@@ -147,12 +185,23 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Text
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let text: String
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Text, sender: Sender, tracking_data: String?, min_api_version: Int = 1, text: String) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.text = text
+        }
     }
     
     public struct PictureMessage: ViberAPIMessage {
@@ -160,14 +209,27 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Picture
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let text: String
         public let media: String
         public let thumbnail: String?
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Picture, sender: Sender, tracking_data: String?, min_api_version: Int = 1, text: String, media: String, thumbnail: String?) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.text = text
+            self.media = media
+            self.thumbnail = thumbnail
+        }
     }
     
     public struct VideoMessage: ViberAPIMessage {
@@ -175,15 +237,29 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Video
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let media: String
         public let size: Int
         public let duration: Int?
         public let thumbnail: String?
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Video, sender: Sender, tracking_data: String?, min_api_version: Int = 1, media: String, size: Int, duration: Int?, thumbnail: String?) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.media = media
+            self.size = size
+            self.duration = duration
+            self.thumbnail = thumbnail
+        }
     }
     
     public struct FileMessage: ViberAPIMessage {
@@ -191,14 +267,27 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.File
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let media: String
         public let size: Int
         public let filename: String
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.File, sender: Sender, tracking_data: String?, min_api_version: Int = 1, media: String, size: Int, filename: String) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.media = media
+            self.size = size
+            self.filename = filename
+        }
     }
     
     public struct ContactMessage: ViberAPIMessage {
@@ -206,12 +295,23 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Contact
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let contact: Contact
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Contact, sender: Sender, tracking_data: String?, min_api_version: Int = 1, contact: Contact) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.contact = contact
+        }
     }
     
     public struct LocationMessage: ViberAPIMessage {
@@ -219,12 +319,23 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Location
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let location: Location
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Location, sender: Sender, tracking_data: String?, min_api_version: Int = 1, location: Location) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.location = location
+        }
     }
     
     public struct URLMessage: ViberAPIMessage {
@@ -232,12 +343,23 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Url
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let URL: String
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Url, sender: Sender, tracking_data: String?, min_api_version: Int = 1, URL: String) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.URL = URL
+        }
     }
     
     public struct StickerMessage: ViberAPIMessage {
@@ -245,12 +367,23 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Sticker
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 1
+        public let min_api_version: Int
         
         public let sticker_id: Int
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Sticker, sender: Sender, tracking_data: String?, min_api_version: Int = 1, sticker_id: Int) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.sticker_id = sticker_id
+        }
     }
     
     public struct CarouselMessage: ViberAPIMessage {
@@ -258,13 +391,25 @@ open class ViberAPI {
         public let broadcast_list: [String]?
         public let from: String?
         
-        public let type: ViberAPIMessageType = ViberAPIMessageType.Carousel
+        public let type: ViberAPIMessageType
         public let sender: Sender
         public let tracking_data: String?
-        public let min_api_version: Int = 2
+        public let min_api_version: Int
         
         public let rich_media: RichMedia
         public let alt_text: String?
+        
+        public init(receiver: String?, broadcast_list: [String]?, from: String?, type: ViberAPIMessageType = ViberAPIMessageType.Carousel, sender: Sender, tracking_data: String?, min_api_version: Int = 2, rich_media: RichMedia, alt_text: String?) {
+            self.receiver = receiver
+            self.broadcast_list = broadcast_list
+            self.from = from
+            self.type = type
+            self.sender = sender
+            self.tracking_data = tracking_data
+            self.min_api_version = min_api_version
+            self.rich_media = rich_media
+            self.alt_text = alt_text
+        }
     }
     
     // TODO: Implement keyboard message type
@@ -453,7 +598,7 @@ open class ViberAPI {
             json: request.toDictionary()
         ) { res in
             if res.ok {
-                completion(.success(decode(res.json as! Data, SetWebhookResponse.self)!))
+                completion(.success(decode(try! JSONSerialization.data(withJSONObject: res.json as! NSDictionary), SetWebhookResponse.self)!))
             } else {
                 completion(.failure(res.error!))
             }
@@ -505,7 +650,7 @@ open class ViberAPI {
             json: message.toDictionary()
         ) { res in
             if res.ok {
-                completion(.success(decode(res.json as! Data, BroadcastMessageResponse.self)!))
+                completion(.success(decode(try! JSONSerialization.data(withJSONObject: res.json as! NSDictionary), BroadcastMessageResponse.self)!))
             } else {
                 completion(.failure(res.error!))
             }
@@ -531,7 +676,7 @@ open class ViberAPI {
             json: request.toDictionary()
         ) { res in
             if res.ok {
-                completion(.success(decode(res.json as! Data, UserDetails.self)!))
+                completion(.success(decode(try! JSONSerialization.data(withJSONObject: res.json as! NSDictionary), UserDetails.self)!))
             } else {
                 completion(.failure(res.error!))
             }

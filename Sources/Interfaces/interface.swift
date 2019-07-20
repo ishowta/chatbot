@@ -11,27 +11,30 @@ extension Encodable {
     }
 }
 
-public struct Config: Codable {
-    init?(dict: [String: Any]) {
-        guard let config = try? JSONDecoder().decode(Config.self, from: JSONSerialization.data(withJSONObject: dict)) else { return nil }
+public struct InterfaceConfig: Codable {
+    init() {
+        let rawConfig = (NSDictionary(contentsOfFile: "./config.plist") ?? NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Interfaces.framework/Resources/config", ofType: "plist")!)) as! [String: Any]
+        let config = try! JSONDecoder().decode(InterfaceConfig.self, from: JSONSerialization.data(withJSONObject: rawConfig))
         self = config
     }
 
-    struct ViberConfig: Codable {
-        let url: String
-        let port: UInt16
-        let name: String
-        let token: String
+    public enum InterfaceType: String, Codable {
+        case Shell = "shell"
+        case ViberBot = "viberbot"
     }
 
-    let interface: String
-    let viber: ViberConfig
+    public struct ViberConfig: Codable {
+        public let url: String
+        public let port: UInt16
+        public let name: String
+        public let token: String
+    }
+
+    public let interface: InterfaceType
+    public let viber: ViberConfig
 }
 
-let config: Config = Config(dict: (
-    NSDictionary(contentsOfFile: "./config.plist") ??
-        NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Interfaces.framework/Resources/config", ofType: "plist")!)
-) as! [String: Any])!
+public let config = InterfaceConfig()
 
 protocol Interface {
     static func run()
