@@ -45,11 +45,11 @@ public class ViberBot: Interface {
                             )
                         }
                     case .Picture, .Video, .File, .Sticker, .Contact, .Url:
-                        logger.info("Does not support this message type.")
+                        logger.info("Does not support \(callback.message.type) message type.")
                     }
                     return HttpResponse.ok(.text(""))
                 case .Subscribed, .Unsubscribed, .ConversationStarted, .Delivered, .Seen, .Failed, .Action:
-                    logger.info("Does not support this callback.")
+                    logger.info("Does not support \(callback.event) callback.")
                     return HttpResponse.ok(.text(""))
                 case .Webhook:
                     logger.info("Accept webhook.")
