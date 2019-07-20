@@ -9,3 +9,4 @@ config.plist
 *.sqlite3
 *.swp
 build/
+Dependencies/
