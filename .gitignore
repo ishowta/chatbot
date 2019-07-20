@@ -8,3 +8,4 @@ DerivedData/
 config.plist
 *.sqlite3
 *.swp
+Dependencies/
