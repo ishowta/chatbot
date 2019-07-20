@@ -7,10 +7,10 @@
 
 import Foundation
 import Just
-import Logging
 import Swifter
+import XCGLogger
 
-let logger = Logger(label: "jp.ac.tsukuba.cs.mibel.chatbot.viberapi")
+let logger = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.viber.viberapi", includeDefaultDestinations: true)
 
 extension Encodable {
     func toDictionary() -> [String: Any]? {

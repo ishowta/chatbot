@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import Logging
+import XCGLogger
+
+let log = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.viber.viber", includeDefaultDestinations: true)
 
 extension Sequence {
     func any(_ f: (Element) -> Bool) -> Bool {

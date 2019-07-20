@@ -1,8 +1,8 @@
 import Foundation
-import Logging
 import SQLite
+import XCGLogger
 
-let logger = Logger(label: "jp.ac.tsukuba.cs.mibel.chatbot.main")
+let logger = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.bot", includeDefaultDestinations: true)
 
 extension AnySequence where Element == Row {
     internal func decode<T: Codable>() -> [T] {

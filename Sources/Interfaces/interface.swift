@@ -1,7 +1,7 @@
 import Foundation
-import Logging
+import XCGLogger
 
-let logger = Logger(label: "jp.ac.tsukuba.cs.mibel.chatbot.interface")
+let logger = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.interface", includeDefaultDestinations: true)
 
 extension Encodable {
     func toDictionary() -> [String: Any]? {
