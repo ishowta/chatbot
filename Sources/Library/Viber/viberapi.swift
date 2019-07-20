@@ -10,6 +10,14 @@ import Just
 import Logging
 import Swifter
 
+let logger = Logger(label: "jp.ac.tsukuba.cs.mibel.chatbot.viberapi")
+
+func dump<T>(_ value: T) -> String {
+    var tmp = ""
+    dump(value, to: &tmp)
+    return tmp
+}
+
 extension Encodable {
     func toDictionary() -> [String: Any]? {
         guard let data = try? JSONEncoder().encode(self) else { return nil }
@@ -18,8 +26,10 @@ extension Encodable {
     }
 }
 
-private func decode<T>(_ data: Data, _ modelType: T.Type) -> T? where T: Decodable {
-    return try? JSONDecoder().decode(modelType, from: data)
+private func decode<T>(_ dict: NSDictionary, _ modelType: T.Type) -> T where T: Decodable {
+    logger.info("decode \(dump(dict)) by \(T.self)")
+    let data = try! JSONSerialization.data(withJSONObject: dict)
+    return try! JSONDecoder().decode(modelType, from: data)
 }
 
 public enum ViberAPIMessageType: String, Codable {
@@ -606,7 +616,7 @@ open class ViberAPI {
             json: request.toDictionary()
         ) { res in
             if res.ok {
-                completion(.success(decode(try! JSONSerialization.data(withJSONObject: res.json as! NSDictionary), SetWebhookResponse.self)!))
+                completion(.success(decode(res.json as! NSDictionary, SetWebhookResponse.self)))
             } else {
                 completion(.failure(res.error!))
             }
@@ -658,7 +668,7 @@ open class ViberAPI {
             json: message.toDictionary()
         ) { res in
             if res.ok {
-                completion(.success(decode(try! JSONSerialization.data(withJSONObject: res.json as! NSDictionary), BroadcastMessageResponse.self)!))
+                completion(.success(decode(res.json as! NSDictionary, BroadcastMessageResponse.self)))
             } else {
                 completion(.failure(res.error!))
             }
@@ -671,7 +681,7 @@ open class ViberAPI {
             json: []
         ) { res in
             if res.ok {
-                completion(.success(decode(res.json as! Data, AccountInfo.self)!))
+                completion(.success(decode(res.json as! NSDictionary, AccountInfo.self)))
             } else {
                 completion(.failure(res.error!))
             }
@@ -684,7 +694,7 @@ open class ViberAPI {
             json: request.toDictionary()
         ) { res in
             if res.ok {
-                completion(.success(decode(try! JSONSerialization.data(withJSONObject: res.json as! NSDictionary), UserDetails.self)!))
+                completion(.success(decode(res.json as! NSDictionary, UserDetails.self)))
             } else {
                 completion(.failure(res.error!))
             }
@@ -697,7 +707,7 @@ open class ViberAPI {
             json: request.toDictionary()
         ) { res in
             if res.ok {
-                completion(.success(decode(res.json as! Data, Online.self)!))
+                completion(.success(decode(res.json as! NSDictionary, Online.self)))
             } else {
                 completion(.failure(res.error!))
             }
