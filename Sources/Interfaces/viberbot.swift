@@ -40,7 +40,7 @@ public class ViberBot: Interface {
                         for message in botMessages {
                             viber.sendMessage(
                                 message: Viber.TextMessage(text: message),
-                                to: user.name,
+                                to: user.id,
                                 { _ in }
                             )
                         }
