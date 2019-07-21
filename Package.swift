@@ -24,10 +24,13 @@ let package = Package(
 
         // HTTP Client
         // .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0-beta.6")
-        .package(url: "https://github.com/micahbenn/Just.git", .branch("master"))
+        .package(url: "https://github.com/micahbenn/Just.git", .branch("master")),
+
+        // Error library
+        .package(url: "https://github.com/kinironote/Fortify", from: "1.1.1")
     ],
     targets: [
-        .target(name: "Bot", dependencies: ["SQLite", "PythonKit", "Regex", "XCGLogger"]),
+        .target(name: "Bot", dependencies: ["SQLite", "PythonKit", "Regex", "XCGLogger", "Fortify"]),
         .target(name: "Viber", dependencies: ["Swifter", "Just", "XCGLogger"], path: "Sources/Library/Viber"),
         .target(name: "Interfaces", dependencies: ["Bot", "Swifter", "Just", "XCGLogger", "Viber"]),
         .target(name: "Run", dependencies: ["Interfaces"]),

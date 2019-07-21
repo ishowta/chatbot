@@ -1,3 +1,5 @@
+import Fortify
+import Foundation
 import PythonKit
 
 extension String {
@@ -63,7 +65,7 @@ class CaseAnylysis {
     ///   - predList: 述語の候補
     /// - Returns: マッチする述語が存在するか
     func match(_ pred: PythonObject, _ predList: [String]) -> Bool {
-        let normalizedPred = String(pred.features["正規化代表表記"])!
+        guard let normalizedPred = String(pred.features.get("正規化代表表記", Python.None)) else { return false }
         return normalizedPred.components(separatedBy: "/").filter { predList.contains($0) }.count > 0
     }
 
@@ -144,6 +146,23 @@ class CaseAnylysis {
         Python.import("os").environ["PATH"] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" // envが無い
         self.knp = PyKNP.KNP(option: "-tab")
         self.juman = PyKNP.Juman()
+    }
+
+    // `a a`などの入力でFatal errorで落ちるのを防いでいるが、XCodeだと落ちる
+    func knpParse(_ text: String) -> PythonObject? {
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: PythonObject?
+        do {
+            _ = try Fortify.exec {
+                result = knp.parse(text)
+                semaphore.signal()
+            }
+        } catch {
+            logger.info("KNP parse error: \(error)")
+            return nil
+        }
+        semaphore.wait()
+        return result
     }
 
     func drawParsedText(_ text: PythonObject) -> String {
