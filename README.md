@@ -24,6 +24,9 @@
 - `swift build`
 - `swift run`
 
+## Documents
+- `./make_doc.sh`
+
 ## Tree
 ```bash
 .
