@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "chatbot::Viber"
-               BuildableName = "Viber.framework"
-               BlueprintName = "Viber"
+               BlueprintIdentifier = "chatbot::Interfaces"
+               BuildableName = "Interfaces.framework"
+               BlueprintName = "Interfaces"
                ReferencedContainer = "container:chatbot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "chatbot::Interfaces"
-               BuildableName = "Interfaces.framework"
-               BlueprintName = "Interfaces"
+               BlueprintIdentifier = "chatbot::Bot"
+               BuildableName = "Bot.framework"
+               BlueprintName = "Bot"
                ReferencedContainer = "container:chatbot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -56,9 +56,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "chatbot::Bot"
-               BuildableName = "Bot.framework"
-               BlueprintName = "Bot"
+               BlueprintIdentifier = "chatbot::Viber"
+               BuildableName = "Viber.framework"
+               BlueprintName = "Viber"
                ReferencedContainer = "container:chatbot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -97,9 +97,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "chatbot::Viber"
-            BuildableName = "Viber.framework"
-            BlueprintName = "Viber"
+            BlueprintIdentifier = "chatbot::Interfaces"
+            BuildableName = "Interfaces.framework"
+            BlueprintName = "Interfaces"
             ReferencedContainer = "container:chatbot.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
