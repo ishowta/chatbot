@@ -32,9 +32,16 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		76A3A3E722E3AEF400FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A3E622E3AEEF00FCB77C /* config.plist */; };
-		76A3A3E922E3B23A00FCB77C /* domainselector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3E822E3B23A00FCB77C /* domainselector.swift */; };
-		76A3A3EA22E3B23A00FCB77C /* domainselector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3E822E3B23A00FCB77C /* domainselector.swift */; };
+		76A3A3E922E3B23A00FCB77C /* ds_stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3E822E3B23A00FCB77C /* ds_stack.swift */; };
+		76A3A3EA22E3B23A00FCB77C /* ds_stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3E822E3B23A00FCB77C /* ds_stack.swift */; };
+		76A3A3EC22E41F2800FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A3EB22E41E5900FCB77C /* config.plist */; };
+		76A3A3EE22E41F2F00FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A3EB22E41E5900FCB77C /* config.plist */; };
+		76A3A3F122E42AA500FCB77C /* ds_onedomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3F022E42AA500FCB77C /* ds_onedomain.swift */; };
+		76A3A3F222E42AA500FCB77C /* ds_onedomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3F022E42AA500FCB77C /* ds_onedomain.swift */; };
+		76A3A3F422E42AB600FCB77C /* ds_simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3F322E42AB600FCB77C /* ds_simple.swift */; };
+		76A3A3F522E42AB600FCB77C /* ds_simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3F322E42AB600FCB77C /* ds_simple.swift */; };
+		76A3A3F722E42BF500FCB77C /* domainselector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3F622E42BF500FCB77C /* domainselector.swift */; };
+		76A3A3F822E42BF500FCB77C /* domainselector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A3F622E42BF500FCB77C /* domainselector.swift */; };
 		OBJ_182 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* AppTests.swift */; };
 		OBJ_184 /* Interfaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Interfaces::Product" /* Interfaces.framework */; };
 		OBJ_185 /* Viber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Viber::Product" /* Viber.framework */; };
@@ -517,8 +524,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		76A3A3E622E3AEEF00FCB77C /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
-		76A3A3E822E3B23A00FCB77C /* domainselector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = domainselector.swift; sourceTree = "<group>"; };
+		76A3A3E822E3B23A00FCB77C /* ds_stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ds_stack.swift; sourceTree = "<group>"; };
+		76A3A3EB22E41E5900FCB77C /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		76A3A3F022E42AA500FCB77C /* ds_onedomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ds_onedomain.swift; sourceTree = "<group>"; };
+		76A3A3F322E42AB600FCB77C /* ds_simple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ds_simple.swift; sourceTree = "<group>"; };
+		76A3A3F622E42BF500FCB77C /* domainselector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = domainselector.swift; sourceTree = "<group>"; };
 		"Just::Just::Product" /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* XcodeColorsLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeColorsLogFormatter.swift; sourceTree = "<group>"; };
 		OBJ_102 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
@@ -789,6 +799,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76A3A3EF22E42A7400FCB77C /* DomainSelector */ = {
+			isa = PBXGroup;
+			children = (
+				76A3A3E822E3B23A00FCB77C /* ds_stack.swift */,
+				76A3A3F022E42AA500FCB77C /* ds_onedomain.swift */,
+				76A3A3F322E42AB600FCB77C /* ds_simple.swift */,
+				76A3A3F622E42BF500FCB77C /* domainselector.swift */,
+			);
+			path = DomainSelector;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Recognizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1136,10 +1157,10 @@
 			path = .build/checkouts/swifter/Sources;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				76A3A3E622E3AEEF00FCB77C /* config.plist */,
+				76A3A3EB22E41E5900FCB77C /* config.plist */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_39 /* Tests */,
@@ -1152,7 +1173,6 @@
 				OBJ_175 /* install_knp.sh */,
 				OBJ_176 /* gitignore.txt */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -1260,8 +1280,8 @@
 		OBJ_9 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				76A3A3EF22E42A7400FCB77C /* DomainSelector */,
 				OBJ_10 /* Recognizer */,
-				76A3A3E822E3B23A00FCB77C /* domainselector.swift */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -1549,6 +1569,7 @@
 			buildPhases = (
 				OBJ_220 /* Sources */,
 				OBJ_236 /* Frameworks */,
+				76A3A3ED22E41F2C00FCB77C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1670,7 +1691,7 @@
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_157 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1706,7 +1727,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76A3A3E722E3AEF400FCB77C /* config.plist in Resources */,
+				76A3A3EC22E41F2800FCB77C /* config.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76A3A3ED22E41F2C00FCB77C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76A3A3EE22E41F2F00FCB77C /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1717,8 +1746,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				76A3A3E922E3B23A00FCB77C /* domainselector.swift in Sources */,
+				76A3A3F722E42BF500FCB77C /* domainselector.swift in Sources */,
+				76A3A3E922E3B23A00FCB77C /* ds_stack.swift in Sources */,
 				OBJ_182 /* AppTests.swift in Sources */,
+				76A3A3F422E42AB600FCB77C /* ds_simple.swift in Sources */,
+				76A3A3F122E42AA500FCB77C /* ds_onedomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1731,16 +1763,19 @@
 				OBJ_223 /* User.swift in Sources */,
 				OBJ_224 /* model.swift in Sources */,
 				OBJ_225 /* planmanager.swift in Sources */,
+				76A3A3F222E42AA500FCB77C /* ds_onedomain.swift in Sources */,
+				76A3A3F522E42AB600FCB77C /* ds_simple.swift in Sources */,
 				OBJ_226 /* pm_actor.swift in Sources */,
 				OBJ_227 /* pm_generator.swift in Sources */,
 				OBJ_228 /* pm_recognizer.swift in Sources */,
-				76A3A3EA22E3B23A00FCB77C /* domainselector.swift in Sources */,
+				76A3A3EA22E3B23A00FCB77C /* ds_stack.swift in Sources */,
 				OBJ_229 /* weatherreporter.swift in Sources */,
 				OBJ_230 /* wr_actor.swift in Sources */,
 				OBJ_231 /* wr_generator.swift in Sources */,
 				OBJ_232 /* wr_recognizer.swift in Sources */,
 				OBJ_233 /* module.swift in Sources */,
 				OBJ_234 /* bot.swift in Sources */,
+				76A3A3F822E42BF500FCB77C /* domainselector.swift in Sources */,
 				OBJ_235 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

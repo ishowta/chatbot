@@ -13,8 +13,8 @@ extension Encodable {
 
 public struct InterfaceConfig: Codable {
     init() {
-        let rawConfig = (NSDictionary(contentsOfFile: "./config.plist") ?? NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Interfaces.framework/Resources/config", ofType: "plist")!)) as! [String: Any]
-        let config = try! JSONDecoder().decode(InterfaceConfig.self, from: JSONSerialization.data(withJSONObject: rawConfig))
+        let rawConfig = (NSDictionary(contentsOfFile: "./config.plist") ?? NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Interfaces.framework/Resources/config", ofType: "plist")!)) as! [String: [String: Any]]
+        let config = try! JSONDecoder().decode(InterfaceConfig.self, from: JSONSerialization.data(withJSONObject: rawConfig["interfaces"]!))
         self = config
     }
 

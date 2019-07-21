@@ -2,18 +2,28 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>interface</key>
-	<string></string>
-	<key>viber</key>
+	<key>bot</key>
 	<dict>
-		<key>url</key>
-		<string></string>
-		<key>name</key>
-		<string></string>
-		<key>port</key>
-		<integer>0</integer>
-		<key>token</key>
-		<string></string>
+		<key>domainStrategy</key>
+		<string>`OneDomain`, `Simple`, `Stuck`</string>
+		<key>domain</key>
+		<string>select domain if you pick `OneDomain`</string>
+	</dict>
+	<key>interfaces</key>
+	<dict>
+		<key>interface</key>
+		<string>`shell`, `viberbot`</string>
+		<key>viber</key>
+		<dict>
+			<key>url</key>
+			<string>(It must be https)</string>
+			<key>name</key>
+			<string>Chatbot</string>
+			<key>port</key>
+			<integer>80</integer>
+			<key>token</key>
+			<string>(Viber API Token)</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

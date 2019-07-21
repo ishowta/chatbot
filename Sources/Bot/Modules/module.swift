@@ -12,7 +12,9 @@ protocol Module {
     ///
     /// - Parameter userMessage: 入力文
     /// - Returns: ( 応答文 , モジュールでの会話が終了したかどうか )
-    mutating func execute(_ userMessage: String) -> ([String], Bool)?
+    mutating func execute(_ userMessage: String) -> [String]?
+
+    var isPlanFinished: Bool { get }
 
     /// - Parameter db: データベース
     /// - Parameter userId: UsersテーブルのユーザーID
@@ -116,7 +118,7 @@ extension DialogueModule {
         return true
     }
 
-    mutating func execute(_ userMessage: String) -> ([String], Bool)? {
+    mutating func execute(_ userMessage: String) -> [String]? {
         logger.info("(1/3) Recognize message")
         guard let userAct = recognize(userMessage) else {
             logger.info("Can't recognize a message in this module")
@@ -138,7 +140,11 @@ extension DialogueModule {
             botMessages = generate(botAct)
         }
         logger.info("(3/3) Bot message: \(botMessages.joined(separator: " "))")
-        return (botMessages, planStack.isEmpty)
+        return botMessages
+    }
+
+    var isPlanFinished: Bool {
+        return planStack.isEmpty
     }
 
     private mutating func executeAct(_ userAct: DialogueAct) -> EitherDialogueActForBot? {

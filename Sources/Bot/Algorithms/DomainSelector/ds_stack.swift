@@ -8,7 +8,7 @@
 import Foundation
 import SQLite
 
-open class DomainSelector {
+open class StackDomainSelector: DomainSelector {
     /// 使用するモジュールのリスト
     static let moduleTypeList: [Module.Type] = [
         PlanManager.self,
@@ -46,7 +46,7 @@ open class DomainSelector {
         var currentPlanModule: Module = discoursePlanStack.last!
         logger.info("Current plan: \(currentPlanModule.name)")
         logger.info("Challenge talk with it.")
-        guard let (responseMessages, isPlanFinished) = currentPlanModule.execute(userMessage) else {
+        guard let responseMessages = currentPlanModule.execute(userMessage) else {
             logger.info("Talk failed. Challenge interrupt other plan.")
             guard let interruptPlan = selectInterruptPlan(userMessage) else {
                 logger.info("Interrupt plan failed.")
@@ -56,7 +56,7 @@ open class DomainSelector {
             discoursePlanStack.append(interruptPlan)
             return talk(userMessage)
         }
-        if isPlanFinished {
+        if currentPlanModule.isPlanFinished {
             logger.info("\(currentPlanModule) is finished.")
             discoursePlanStack.removeLast()
         }
@@ -68,7 +68,7 @@ open class DomainSelector {
     /// - Parameter firstMessage: 入力文
     /// - Returns: 選択されたモジュール
     func selectFirstPlan(firstMessage: String) -> Module? {
-        let acceptableModuleTypeList = DomainSelector.moduleTypeList.filter {
+        let acceptableModuleTypeList = StackDomainSelector.moduleTypeList.filter {
             $0.init(db: db, userId: userId).isAccestableForFirstMessage(firstMessage)
         }
         if acceptableModuleTypeList.isEmpty {

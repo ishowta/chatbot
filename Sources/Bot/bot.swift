@@ -11,8 +11,7 @@ open class Bot {
     let Users = Table("Users")
     let Plans = Table("Plans")
 
-    var module: Module
-    let domainSelector: DomainSelector?
+    let domainSelector: DomainSelector
 
     /// 初期化
     ///
@@ -22,8 +21,17 @@ open class Bot {
         Plan.create(db: db, table: Plans)
         try! db.run(Users.insert(or: .ignore, User.rawId <- userRawId))
         self.userId = try! db.pluck(Users.filter(User.rawId == userRawId))![User.id]
-        self.module = WeatherReporter(db: db, userId: userId)
-        self.domainSelector = nil // DomainSelector(db: db, userId: userId)
+        switch config.domainStrategy {
+        case .OneDomain:
+            let moduleType = NSClassFromString("Bot." + config.domain) as! Module.Type
+            self.domainSelector = OneDomainDomainSelector(
+                module: moduleType.init(db: db, userId: userId)
+            )
+        case .Simple:
+            self.domainSelector = SimpleDomainSelector(db: db, userId: userId)
+        case .Stack:
+            self.domainSelector = StackDomainSelector(db: db, userId: userId)
+        }
     }
 
     /// 一回の会話を行う
@@ -32,23 +40,10 @@ open class Bot {
     /// - Returns: 返答文
     public func talk(_ userMessage: String) -> [String] {
         logger.info("User message: \(userMessage)")
-        let botMessages = (domainSelector != nil) ? domainSelector!.talk(userMessage) : talkImpl(userMessage)
+        let botMessages = domainSelector.talk(userMessage)
         for message in botMessages {
             logger.info("Bot message: \(message)")
         }
         return botMessages
-    }
-
-    func talkImpl(_ userMessage: String) -> [String] {
-        logger.info("Start talk.")
-        guard let (responseMessages, isPlanFinished) = module.execute(userMessage) else {
-            logger.info("Talk failed.")
-            return Bot.cannotUnderstandMessage
-        }
-        if isPlanFinished {
-            logger.info("Talk finished.")
-            module = WeatherReporter(db: db, userId: userId)
-        }
-        return responseMessages
     }
 }
