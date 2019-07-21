@@ -36,6 +36,8 @@
 		76A3A42F22E43EBF00FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A42C22E43EB300FCB77C /* config.plist */; };
 		76A3A43122E4455F00FCB77C /* stackplanmodule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A43022E4455F00FCB77C /* stackplanmodule.swift */; };
 		76A3A43222E4455F00FCB77C /* stackplanmodule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A43022E4455F00FCB77C /* stackplanmodule.swift */; };
+		76C4C85022E44EDB001DAAD8 /* datehelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C4C84F22E44EDB001DAAD8 /* datehelper.swift */; };
+		76C4C85122E44EDB001DAAD8 /* datehelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C4C84F22E44EDB001DAAD8 /* datehelper.swift */; };
 		OBJ_192 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* AppTests.swift */; };
 		OBJ_194 /* Interfaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Interfaces::Product" /* Interfaces.framework */; };
 		OBJ_195 /* Viber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Viber::Product" /* Viber.framework */; };
@@ -558,6 +560,7 @@
 /* Begin PBXFileReference section */
 		76A3A42C22E43EB300FCB77C /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		76A3A43022E4455F00FCB77C /* stackplanmodule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stackplanmodule.swift; sourceTree = "<group>"; };
+		76C4C84F22E44EDB001DAAD8 /* datehelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datehelper.swift; sourceTree = "<group>"; };
 		"Fortify::Fortify::Product" /* Fortify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fortify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Just::Just::Product" /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* FileNameFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameFilter.swift; sourceTree = "<group>"; };
@@ -846,6 +849,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76C4C84D22E44EC5001DAAD8 /* Actor */ = {
+			isa = PBXGroup;
+			children = (
+				76C4C84F22E44EDB001DAAD8 /* datehelper.swift */,
+			);
+			path = Actor;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* DomainSelector */ = {
 			isa = PBXGroup;
 			children = (
@@ -1173,7 +1184,7 @@
 			path = .build/checkouts/Fortify/Sources/Fortify;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				76A3A42C22E43EB300FCB77C /* config.plist */,
@@ -1189,7 +1200,6 @@
 				OBJ_185 /* install_knp.sh */,
 				OBJ_186 /* gitignore.txt */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_52 /* Just */ = {
@@ -1340,6 +1350,7 @@
 		OBJ_9 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				76C4C84D22E44EC5001DAAD8 /* Actor */,
 				OBJ_10 /* DomainSelector */,
 				OBJ_15 /* Recognizer */,
 			);
@@ -1794,7 +1805,7 @@
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_166 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1852,6 +1863,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_192 /* AppTests.swift in Sources */,
+				76C4C85022E44EDB001DAAD8 /* datehelper.swift in Sources */,
 				76A3A43122E4455F00FCB77C /* stackplanmodule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1861,6 +1873,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_234 /* domainselector.swift in Sources */,
+				76C4C85122E44EDB001DAAD8 /* datehelper.swift in Sources */,
 				OBJ_235 /* ds_onedomain.swift in Sources */,
 				OBJ_236 /* ds_simple.swift in Sources */,
 				OBJ_237 /* ds_stack.swift in Sources */,

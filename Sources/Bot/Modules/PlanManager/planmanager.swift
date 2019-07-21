@@ -17,7 +17,7 @@ final class PlanManager: StackPlanModule {
     var actor: Actor?
     func act(_ domainPlan: inout DomainPlan, _ dialogueAct: DialogueAct) -> (EitherDialogueActForBot, Bool)? {
         if actor == nil {
-            actor = Actor(self)
+            actor = Actor(db: db, userId: userId)
         }
         return actor!.run(domainPlan, dialogueAct)
     }

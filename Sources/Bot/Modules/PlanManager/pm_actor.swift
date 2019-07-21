@@ -2,139 +2,17 @@ import Foundation
 import Regex
 import SQLite
 
-private let calendar = Calendar(identifier: .gregorian)
-
-extension Date {
-    fileprivate func toComponents() -> DateComponents {
-        return Calendar(identifier: .gregorian).dateComponents(in: TimeZone.current, from: self)
-    }
-}
-
-private protocol SQL {
-    func toSQL() -> String
-}
-
-extension String: SQL {
-    fileprivate func toSQL() -> String { return self }
-}
-
-extension Expression: SQL {
-    fileprivate func toSQL() -> String { return template }
-}
-
-extension DateComponents {
-    fileprivate var y: String { return "\(year!)" }
-    fileprivate var m: String { return "\(month!)" }
-    fileprivate var d: String { return "\(day!)" }
-    fileprivate var h: String { return "\(hour!)" }
-    fileprivate var M: String { return "\(minute!)" }
-    fileprivate var s: String { return "\(second!)" }
-}
-
-extension Calendar {
-    fileprivate func date(byAdding: Component, value: Int, to: Expression<Date>) -> Expression<Date> {
-        switch byAdding {
-        case .day:
-            return Expression<Date>("datetime(\(to.template), '\(value) days')")
-        case .year:
-            return Expression<Date>("datetime(\(to.template), '\(value) years')")
-        case .month:
-            return Expression<Date>("datetime(\(to.template), '\(value) months')")
-        case .hour:
-            return Expression<Date>("datetime(\(to.template), '\(value) hours')")
-        case .minute:
-            return Expression<Date>("datetime(\(to.template), '\(value) minutes')")
-        case .second:
-            return Expression<Date>("datetime(\(to.template), '\(value) seconds')")
-        case .weekday:
-            return Expression<Date>("datetime(\(to.template), 'weekday \(value)')")
-        default:
-            fatalError()
-        }
-    }
-}
-
-/// 日時を示すSQLを生成する
-///
-/// - Parameters:
-///   - y: 年
-///   - m: 月
-///   - d: 日
-///   - h: 時
-///   - M: 分
-///   - s: 秒
-/// - Returns: 日時
-private func genDate(y: SQL, m: SQL, d: SQL, h: SQL, M: SQL, s: SQL) -> Expression<Date> {
-    return Expression<Date>("datetime('0000-00-00 00:00:00', '\(y.toSQL()) years', '\(m.toSQL()) months', '\(d.toSQL()) days', '\(h.toSQL()) hours', '\(M.toSQL()) minutes', '\(s.toSQL()) seconds')")
-}
-
-private func replaceDatetime(_ from: Expression<Date>, _ to: DateComponents) -> Expression<Date> {
-    return genDate(
-        y: from.y,
-        m: to.m,
-        d: to.d,
-        h: to.h,
-        M: to.M,
-        s: from.s
-    )
-}
-
-private func compDatetime(_ lhs: Expression<Date>, _ rhs: DateComponents) -> Expression<Bool> {
-    return lhs.m == rhs.m
-        && lhs.d == rhs.d
-        && lhs.h == rhs.h
-        && lhs.M == rhs.M
-}
-
-private func replaceDate(_ from: Expression<Date>, _ to: DateComponents) -> Expression<Date> {
-    return genDate(
-        y: from.y,
-        m: to.m,
-        d: to.d,
-        h: from.h,
-        M: from.M,
-        s: from.s
-    )
-}
-
-private func compDate(_ lhs: Expression<Date>, _ rhs: DateComponents) -> Expression<Bool> {
-    return lhs.m == rhs.m
-        && lhs.d == rhs.d
-}
-
-private func replaceTime(_ from: Expression<Date>, _ to: DateComponents) -> Expression<Date> {
-    return genDate(
-        y: from.y,
-        m: from.m,
-        d: from.d,
-        h: to.h,
-        M: to.M,
-        s: from.s
-    )
-}
-
-private func compTime(_ lhs: Expression<Date>, _ rhs: DateComponents) -> Expression<Bool> {
-    return lhs.h == rhs.h
-        && lhs.M == rhs.M
-}
-
-private func replaceDatetime(_ from: Expression<Date>, _ to: Date) -> Expression<Date> { return replaceDatetime(from, to.toComponents()) }
-private func replaceDate(_ from: Expression<Date>, _ to: Date) -> Expression<Date> { return replaceDate(from, to.toComponents()) }
-private func replaceTime(_ from: Expression<Date>, _ to: Date) -> Expression<Date> { return replaceTime(from, to.toComponents()) }
-private func compDatetime(_ from: Expression<Date>, _ to: Date) -> Expression<Bool> { return compDatetime(from, to.toComponents()) }
-private func compDate(_ from: Expression<Date>, _ to: Date) -> Expression<Bool> { return compDate(from, to.toComponents()) }
-private func compTime(_ from: Expression<Date>, _ to: Date) -> Expression<Bool> { return compTime(from, to.toComponents()) }
-
 extension PlanManager {
     class Actor {
-        let planManager: Module
         let db: Connection
+        let userId: Int
 
-        init(_ planManager: PlanManager) {
-            self.planManager = planManager
-            self.db = planManager.db
+        init(db: Connection, userId: Int) {
+            self.db = db
+            self.userId = userId
         }
 
+        /// 日付をパースする
         func parseDate(_ rawDate: String) -> DateComponents? {
             let dateFormater = DateFormatter()
             let calendar = Calendar.current
@@ -149,6 +27,7 @@ extension PlanManager {
             )
         }
 
+        /// 時刻をパースする
         func parseTime(_ rawTime: String) -> DateComponents? {
             let dateFormater = DateFormatter()
             let calendar = Calendar.current
@@ -163,6 +42,7 @@ extension PlanManager {
             )
         }
 
+        /// 日付に関する条件（明日、3日前など）をパースする
         func parseCondition(_ cond: String) -> Condition? {
             let today = Date()
             switch cond {
@@ -239,6 +119,7 @@ extension PlanManager {
             }
         }
 
+        /// 日付と時刻をくっつける
         func generateDateTime(_ date: DateComponents, _ time: DateComponents) -> DateComponents {
             return DateComponents(
                 calendar: calendar,
@@ -251,16 +132,18 @@ extension PlanManager {
             )
         }
 
+        /// 日時をパースする
         func parseDateTime(_ raw_date: String, _ raw_time: String) -> DateComponents? {
             guard
                 let date = parseDate(raw_date),
                 let time = parseDate(raw_time)
-                else {
-                    return nil
+            else {
+                return nil
             }
             return generateDateTime(date, time)
         }
 
+        /// 同じ日時にプランが存在しないかチェック
         func checkDuplicate(date: Date) -> [Plan]? {
             let duplicatedPlans: [Plan]? = try? db.prepare(Table("Plans").filter(Plan.date == date)).decode()
             if duplicatedPlans?.count != 0 {
@@ -269,13 +152,14 @@ extension PlanManager {
             return nil
         }
 
+        /// 同じ日時条件にプランが存在しないかチェック
         func checkDuplicate(condition cond: Condition) -> [Plan]? {
             let duplicatedPlans: [Plan]? = try? db.prepare(Table("Plans").filter(cond.match(Plan.date))).decode()
             return duplicatedPlans
         }
 
         func run(_ domainPlan: DomainPlan, _ dialogueAct: DialogueAct) -> (EitherDialogueActForBot, Bool)? {
-            let userPlans = Table("Plans").filter(Plan.userId == planManager.userId)
+            let userPlans = Table("Plans").filter(Plan.userId == userId)
             switch domainPlan {
             case let plan as RegistrationPlan:
                 switch dialogueAct {
@@ -334,8 +218,8 @@ extension PlanManager {
                         false
                     )
                 }
-                // プランを登録する
-                let newPlan = Plan(id: nil, title: planTitle, date: planDatetime.date!, userId: planManager.userId)
+                // 予定を登録する
+                let newPlan = Plan(id: nil, title: planTitle, date: planDatetime.date!, userId: userId)
                 try! db.run(Table("Plans").insert(newPlan))
                 plan.registratedPlan = newPlan
                 return (
