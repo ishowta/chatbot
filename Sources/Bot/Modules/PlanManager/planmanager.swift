@@ -2,7 +2,7 @@ import Foundation
 import Regex
 import SQLite
 
-final class PlanManager: DialogueModule {
+final class PlanManager: StackPlanModule {
     let db: Connection
 
     let userId: Int

@@ -34,6 +34,8 @@
 /* Begin PBXBuildFile section */
 		76A3A42D22E43EB700FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A42C22E43EB300FCB77C /* config.plist */; };
 		76A3A42F22E43EBF00FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A42C22E43EB300FCB77C /* config.plist */; };
+		76A3A43122E4455F00FCB77C /* stackplanmodule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A43022E4455F00FCB77C /* stackplanmodule.swift */; };
+		76A3A43222E4455F00FCB77C /* stackplanmodule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A43022E4455F00FCB77C /* stackplanmodule.swift */; };
 		OBJ_192 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* AppTests.swift */; };
 		OBJ_194 /* Interfaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Interfaces::Product" /* Interfaces.framework */; };
 		OBJ_195 /* Viber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Viber::Product" /* Viber.framework */; };
@@ -555,6 +557,7 @@
 
 /* Begin PBXFileReference section */
 		76A3A42C22E43EB300FCB77C /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		76A3A43022E4455F00FCB77C /* stackplanmodule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stackplanmodule.swift; sourceTree = "<group>"; };
 		"Fortify::Fortify::Product" /* Fortify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fortify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Just::Just::Product" /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* FileNameFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameFilter.swift; sourceTree = "<group>"; };
@@ -1064,6 +1067,7 @@
 				OBJ_22 /* PlanManager */,
 				OBJ_27 /* WeatherReporter */,
 				OBJ_32 /* module.swift */,
+				76A3A43022E4455F00FCB77C /* stackplanmodule.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1848,6 +1852,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_192 /* AppTests.swift in Sources */,
+				76A3A43122E4455F00FCB77C /* stackplanmodule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1874,6 +1879,7 @@
 				OBJ_250 /* module.swift in Sources */,
 				OBJ_251 /* bot.swift in Sources */,
 				OBJ_252 /* extensions.swift in Sources */,
+				76A3A43222E4455F00FCB77C /* stackplanmodule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

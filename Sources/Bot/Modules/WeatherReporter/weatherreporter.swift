@@ -2,7 +2,7 @@ import Foundation
 import Regex
 import SQLite
 
-final class WeatherReporter: DialogueModule {
+final class WeatherReporter: StackPlanModule {
     let db: Connection
 
     let userId: Int
