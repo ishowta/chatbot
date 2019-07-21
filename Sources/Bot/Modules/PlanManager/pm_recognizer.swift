@@ -78,7 +78,10 @@ extension PlanManager {
 
         func run(_ rawMessage: String) -> PlanManager.DialogueAct? {
             logger.debug("Raw message: \(rawMessage)")
-            let message = knp.parse(rawMessage)
+            guard let message = knpParse(rawMessage) else {
+                logger.info("メッセージ \"\(rawMessage)\" の構文・意味解析に失敗しました")
+                return nil
+            }
             logger.debug("Parsed message: \n\(drawParsedText(message))")
             guard let parentPredTag = getParentPredicate(text: message) else { return nil }
             let tag = parentPredTag
