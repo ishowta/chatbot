@@ -3,25 +3,32 @@
 ## Require
 - swift
 - python3
+- ruby
+- xcodeproj (ruby gem)
 - cmake (for KNP)
 - libz-dev (for KNP)
 - libsqlite3-dev (for SQLite.swift)
 
 ## Setup
+1. Install required libraries
 1. Install Python library
     - `pip3 install -r requirements.txt`
 1. Install KNP
-    - `sudo ./install_knp.sh`
-    - add path to bin and lib
+    - `./install_knp.sh /path/to/install`
 1. Copy `./config-sample.plist` to `./config.plist` and fill it
 
-## Update package
-1. Edit Package.swift
-1. If you use XCode, type `swift package generate-xcodeproj`
-1. If you use XCode, add `config.plist` to `Copy Bundle Resource Phase` for each target using config
+## Install or Update package
+### XCode
+1. (Edit Package.swift)
+1. Generate xcode project
+     - `swift package generate-xcodeproj`
+1. Append resources
+     - `ruby add_resource.rb chatbot.xcodeproj config.plist Bot Interfaces`
+### Swift command line
+1. (Edit Package.swift)
+1. `swift build`
 
 ## Run
-- `swift build`
 - `swift run`
 
 ## Documents
@@ -101,4 +108,3 @@
 - ViberAPIの未実装の部分を書く
 - KNPのSwiftラッパーを書く
 - Viber InterfaceがSIGINTに反応してくれないのを治す
-- `Copy Bundle Resource Phase`が毎回リセットされるのをどうにかする
