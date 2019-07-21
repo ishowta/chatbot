@@ -1,3 +1,5 @@
+import Fortify
+import Foundation
 import PythonKit
 
 extension String {
@@ -34,6 +36,7 @@ extension String {
     }
 }
 
+/// 格構造解析器を用いて言語理解を行うためのヘルパー
 class CaseAnylysis {
     /// 述語のリストを得る
     ///
@@ -63,7 +66,7 @@ class CaseAnylysis {
     ///   - predList: 述語の候補
     /// - Returns: マッチする述語が存在するか
     func match(_ pred: PythonObject, _ predList: [String]) -> Bool {
-        let normalizedPred = String(pred.features["正規化代表表記"])!
+        guard let normalizedPred = String(pred.features.get("正規化代表表記", Python.None)) else { return false }
         return normalizedPred.components(separatedBy: "/").filter { predList.contains($0) }.count > 0
     }
 
@@ -146,6 +149,23 @@ class CaseAnylysis {
         self.juman = PyKNP.Juman()
     }
 
+    // `a a`などの入力でFatal errorで落ちるのを防いでいるが、XCodeだと落ちる
+    func knpParse(_ text: String) -> PythonObject? {
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: PythonObject?
+        do {
+            _ = try Fortify.exec {
+                result = knp.parse(text)
+                semaphore.signal()
+            }
+        } catch {
+            logger.info("KNP parse error: \(error)")
+            return nil
+        }
+        semaphore.wait()
+        return result
+    }
+
     func drawParsedText(_ text: PythonObject) -> String {
         var res = ""
         print("基本句", to: &res)
@@ -167,5 +187,55 @@ class CaseAnylysis {
             }
         }
         return res
+    }
+
+    /// 述語から時間を示すタグを返す
+    ///
+    /// - Parameters:
+    ///   - message: パースされたテキスト
+    ///   - predTag: 述語
+    /// - Returns: 時間を示すタグ
+    func getPredWhenTags(_ message: PythonObject, _ predTag: PythonObject) -> [PythonObject]? {
+        let allTags = message.tag_list()
+        guard predTag.pas.arguments.contains("時間") else {
+            return nil
+        }
+        let predWhenArgs = predTag.pas.arguments["時間"]
+        let predWhenTags = predWhenArgs.map { allTags[$0.tid] }
+        return predWhenTags
+    }
+
+    /// 時間を示すタグから日時を取り出す
+    ///
+    /// - Parameter whenTags: 時間を示すタグの集合
+    /// - Returns: 日時
+    func extractDate(_ whenTags: [PythonObject]) -> String? {
+        let allWhenTags = gatherTag(whenTags)
+        for tag in allWhenTags {
+            if tag.features.contains("NE"), String(tag.features["NE"])!.components(separatedBy: ":")[0] == "DATE" {
+                return String(tag.features["NE"])!.components(separatedBy: ":")[1]
+            }
+        }
+        return nil
+    }
+
+    /// 時間を示すタグから時刻を取り出す
+    ///
+    /// - Parameter whenTags: 時間を示すタグの集合
+    /// - Returns: 時刻
+    func extractTime(_ whenTags: [PythonObject]) -> String? {
+        let allWhenTags = gatherTag(whenTags)
+        var minute = ""
+        var hour = ""
+        for tag in allWhenTags {
+            if tag.features.contains("カウンタ"), tag.features["カウンタ"] == "分" {
+                minute = String(tag.features["正規化代表表記"])!.components(separatedBy: "/")[0] + "分"
+            }
+            if tag.features.contains("カウンタ"), tag.features["カウンタ"] == "時" {
+                hour = String(tag.features["正規化代表表記"])!.components(separatedBy: "/")[0] + "時"
+            }
+        }
+        let time = hour + minute
+        return time == "" ? nil : time
     }
 }

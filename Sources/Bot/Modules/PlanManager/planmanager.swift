@@ -2,7 +2,10 @@ import Foundation
 import Regex
 import SQLite
 
-final class PlanManager: DialogueModule {
+/// 予定を管理してくれるモジュール
+///
+/// 予定の登録、変更、削除、表示ができる
+final class PlanManager: StackPlanModule {
     let db: Connection
 
     let userId: Int
@@ -17,7 +20,7 @@ final class PlanManager: DialogueModule {
     var actor: Actor?
     func act(_ domainPlan: inout DomainPlan, _ dialogueAct: DialogueAct) -> (EitherDialogueActForBot, Bool)? {
         if actor == nil {
-            actor = Actor(self)
+            actor = Actor(db: db, userId: userId)
         }
         return actor!.run(domainPlan, dialogueAct)
     }
