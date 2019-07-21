@@ -32,31 +32,39 @@
 .
 ├── Package.resolved # Swiftのライブラリの依存関係？を示す自動生成されるファイル
 ├── Package.swift # Swiftの設定ファイル（Swiftのライブラリーはここに追加する）
+├── README.md
 ├── Sources
-│   ├── Bot # チャットボット本体
-│   │   ├── Models # 内部で用いるDBのモデル
-│   │   │   ├── Plan.swift
-│   │   │   ├── User.swift
-│   │   │   └── model.swift
-│   │   ├── Modules # チャットボットが使うモジュール(ドメイン)を入れるところ
-│   │   │   ├── PlanManager # 予定を立ててくれるモジュール
-│   │   │   │   ├── planmanager.swift
+│   ├── Bot # チャットボット本体
+│   │   ├── Algorithms
+│   │   │   ├── Actor # 行動選択のアルゴリズム
+│   │   │   │   └── datehelper.swift # Actorで使う日付に関するUtil
+│   │   │   ├── DomainSelector # ドメイン選択のアルゴリズム
+│   │   │   │   ├── domainselector.swift # ドメイン選択のプロトコル
+│   │   │   │   ├── ds_onedomain.swift # ドメインを一つだけ使う（選択しない）
+│   │   │   │   ├── ds_simple.swift # １ターンごとに選択する
+│   │   │   │   └── ds_stack.swift # スタックでドメインを管理する
+│   │   │   ├── Generator # 言語生成のアルゴリズム
+│   │   │   └── Recognizer # 言語理解のアルゴリズム
+│   │   │       ├── case_analysis.swift # 格解析を使った言語理解	
+│   │   ├── Models # 内部で用いるDBのモデル
+│   │   │   ├── Plan.swift # Plan Managerで使う予定モデル
+│   │   │   ├── User.swift # ユーザーを記憶するユーザーモデル
+│   │   │   └── model.swift # モデルのプロトコル・Util
+│   │   ├── Modules # モジュール
+│   │   │   ├── PlanManager # 予定管理モジュール
+│   │   │   │   ├── planmanager.swift
 │   │   │   │   ├── pm_actor.swift
 │   │   │   │   ├── pm_generator.swift
 │   │   │   │   └── pm_recognizer.swift
-│   │   │   ├── WeatherReporter # 天気を教えてくれるモジュール
-│   │   │   │   ├── weatherreporter.swift
+│   │   │   ├── WeatherReporter # 天気レポートモジュール
+│   │   │   │   ├── weatherreporter.swift
 │   │   │   │   ├── wr_actor.swift
 │   │   │   │   ├── wr_generator.swift
 │   │   │   │   └── wr_recognizer.swift
-│   │   │   └── module.swift
-│   │   ├── Algorithms
-│   │   │   ├── Actor # 行動選択のアルゴリズムを入れるところ
-│   │   │   ├── Generator # 言語生成のアルゴリズムを入れるところ
-│   │   │   └── Recognizer # 言語理解のアルゴリズムを入れるところ
-│   │   │       └── case_analysis.swift
-│   │   ├── bot.swift # チャットボット
-│   │   └── extensions.swift # Util
+│   │   │   ├── module.swift # モジュールのプロトコル
+│   │   │   └── stackplanmodule.swift # プランスタックを用いるモジュールのプロトコル
+│   │   ├── bot.swift # チャットボット本体
+│   │   └── extensions.swift # Util
 │   ├── Interfaces # チャットボットと会話するためのインターフェース
 │   │   ├── interface.swift # インターフェースの設定
 │   │   ├── shell.swift # 端末上で対話
@@ -70,15 +78,20 @@
 ├── Tests # テスト（未実装）
 │   │
 │   ...
-├── chatbot.xcodeproj # XCodeの設定ファイル（ignore）
+│
+├── chatbot.xcodeproj # XCodeの設定ファイルなど
 │   │
 │   ...
+│
 ├── config-sample.plist # 設定ファイルのサンプル
 ├── config.plist # 設定ファイル(ignore)
 ├── db.sqlite3 # SQLite.swiftで使われているDB(ignore)
 ├── gitignore.txt
 ├── install_knp.sh # KNP(構文・意味解析器)のインストールスクリプト
+├── make_doc.sh # ドキュメントを作成するスクリプト
 └── requirements.txt # Pythonライブラリーのリスト
+
+
 ```
 
 ## Reference
@@ -87,7 +100,5 @@
 ## Todo
 - ViberAPIの未実装の部分を書く
 - KNPのSwiftラッパーを書く
-- Refactoring
-- Make documentation
 - Viber InterfaceがSIGINTに反応してくれないのを治す
 - `Copy Bundle Resource Phase`が毎回リセットされるのをどうにかする
