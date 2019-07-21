@@ -34,10 +34,13 @@
 /* Begin PBXBuildFile section */
 		76A3A42D22E43EB700FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A42C22E43EB300FCB77C /* config.plist */; };
 		76A3A42F22E43EBF00FCB77C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A3A42C22E43EB300FCB77C /* config.plist */; };
+<<<<<<< HEAD
 		76A3A43122E4455F00FCB77C /* stackplanmodule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A43022E4455F00FCB77C /* stackplanmodule.swift */; };
 		76A3A43222E4455F00FCB77C /* stackplanmodule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A3A43022E4455F00FCB77C /* stackplanmodule.swift */; };
 		76C4C85022E44EDB001DAAD8 /* datehelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C4C84F22E44EDB001DAAD8 /* datehelper.swift */; };
 		76C4C85122E44EDB001DAAD8 /* datehelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C4C84F22E44EDB001DAAD8 /* datehelper.swift */; };
+=======
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 		OBJ_192 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* AppTests.swift */; };
 		OBJ_194 /* Interfaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Interfaces::Product" /* Interfaces.framework */; };
 		OBJ_195 /* Viber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "chatbot::Viber::Product" /* Viber.framework */; };
@@ -559,8 +562,11 @@
 
 /* Begin PBXFileReference section */
 		76A3A42C22E43EB300FCB77C /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		76A3A43022E4455F00FCB77C /* stackplanmodule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stackplanmodule.swift; sourceTree = "<group>"; };
 		76C4C84F22E44EDB001DAAD8 /* datehelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datehelper.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 		"Fortify::Fortify::Product" /* Fortify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fortify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Just::Just::Product" /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* FileNameFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameFilter.swift; sourceTree = "<group>"; };
@@ -701,6 +707,48 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		OBJ_193 /* Frameworks */ = {
+<<<<<<< HEAD
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_194 /* Interfaces.framework in Frameworks */,
+				OBJ_195 /* Viber.framework in Frameworks */,
+				OBJ_196 /* Just.framework in Frameworks */,
+				OBJ_197 /* Swifter.framework in Frameworks */,
+				OBJ_198 /* Bot.framework in Frameworks */,
+				OBJ_199 /* Fortify.framework in Frameworks */,
+				OBJ_200 /* XCGLogger.framework in Frameworks */,
+				OBJ_201 /* ObjcExceptionBridging.framework in Frameworks */,
+				OBJ_202 /* Regex.framework in Frameworks */,
+				OBJ_203 /* PythonKit.framework in Frameworks */,
+				OBJ_204 /* SQLite.framework in Frameworks */,
+				OBJ_205 /* SQLiteObjc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_253 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_254 /* Fortify.framework in Frameworks */,
+				OBJ_255 /* XCGLogger.framework in Frameworks */,
+				OBJ_256 /* ObjcExceptionBridging.framework in Frameworks */,
+				OBJ_257 /* Regex.framework in Frameworks */,
+				OBJ_258 /* PythonKit.framework in Frameworks */,
+				OBJ_259 /* SQLite.framework in Frameworks */,
+				OBJ_260 /* SQLiteObjc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_273 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_287 /* Frameworks */ = {
+=======
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
@@ -759,26 +807,58 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		OBJ_315 /* Frameworks */ = {
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				OBJ_288 /* Viber.framework in Frameworks */,
+				OBJ_289 /* Just.framework in Frameworks */,
+				OBJ_290 /* Swifter.framework in Frameworks */,
+				OBJ_291 /* Bot.framework in Frameworks */,
+				OBJ_292 /* Fortify.framework in Frameworks */,
+				OBJ_293 /* XCGLogger.framework in Frameworks */,
+				OBJ_294 /* ObjcExceptionBridging.framework in Frameworks */,
+				OBJ_295 /* Regex.framework in Frameworks */,
+				OBJ_296 /* PythonKit.framework in Frameworks */,
+				OBJ_297 /* SQLite.framework in Frameworks */,
+				OBJ_298 /* SQLiteObjc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
+		OBJ_315 /* Frameworks */ = {
+=======
 		OBJ_329 /* Frameworks */ = {
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
+		OBJ_329 /* Frameworks */ = {
+=======
 		OBJ_338 /* Frameworks */ = {
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
+		OBJ_338 /* Frameworks */ = {
+=======
+		OBJ_355 /* Frameworks */ = {
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+<<<<<<< HEAD
 		OBJ_355 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -786,6 +866,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		OBJ_368 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_369 /* Interfaces.framework in Frameworks */,
+				OBJ_370 /* Viber.framework in Frameworks */,
+				OBJ_371 /* Just.framework in Frameworks */,
+				OBJ_372 /* Swifter.framework in Frameworks */,
+				OBJ_373 /* Bot.framework in Frameworks */,
+				OBJ_374 /* Fortify.framework in Frameworks */,
+				OBJ_375 /* XCGLogger.framework in Frameworks */,
+				OBJ_376 /* ObjcExceptionBridging.framework in Frameworks */,
+				OBJ_377 /* Regex.framework in Frameworks */,
+				OBJ_378 /* PythonKit.framework in Frameworks */,
+				OBJ_379 /* SQLite.framework in Frameworks */,
+				OBJ_380 /* SQLiteObjc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_419 /* Frameworks */ = {
+=======
 		OBJ_368 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -814,12 +915,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		OBJ_435 /* Frameworks */ = {
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_420 /* SQLiteObjc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+<<<<<<< HEAD
+		OBJ_435 /* Frameworks */ = {
+=======
+		OBJ_460 /* Frameworks */ = {
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		OBJ_460 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -842,6 +957,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+=======
+		OBJ_473 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_474 /* XCGLogger.framework in Frameworks */,
+				OBJ_475 /* ObjcExceptionBridging.framework in Frameworks */,
+				OBJ_476 /* Just.framework in Frameworks */,
+				OBJ_477 /* Swifter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 				OBJ_511 /* ObjcExceptionBridging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,6 +981,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 		76C4C84D22E44EC5001DAAD8 /* Actor */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,6 +990,8 @@
 			path = Actor;
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 		OBJ_10 /* DomainSelector */ = {
 			isa = PBXGroup;
 			children = (
@@ -1016,6 +1151,7 @@
 			sourceTree = "<group>";
 		};
 		OBJ_15 /* Recognizer */ = {
+<<<<<<< HEAD
 			isa = PBXGroup;
 			children = (
 				OBJ_16 /* case_analysis.swift */,
@@ -1026,6 +1162,18 @@
 		OBJ_161 /* SQLiteObjc */ = {
 			isa = PBXGroup;
 			children = (
+=======
+			isa = PBXGroup;
+			children = (
+				OBJ_16 /* case_analysis.swift */,
+			);
+			path = Recognizer;
+			sourceTree = "<group>";
+		};
+		OBJ_161 /* SQLiteObjc */ = {
+			isa = PBXGroup;
+			children = (
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 				OBJ_162 /* SQLiteObjc.m */,
 				OBJ_163 /* include */,
 			);
@@ -1063,6 +1211,7 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		OBJ_17 /* Models */ = {
+<<<<<<< HEAD
 			isa = PBXGroup;
 			children = (
 				OBJ_18 /* Plan.swift */,
@@ -1079,6 +1228,23 @@
 				OBJ_27 /* WeatherReporter */,
 				OBJ_32 /* module.swift */,
 				76A3A43022E4455F00FCB77C /* stackplanmodule.swift */,
+=======
+			isa = PBXGroup;
+			children = (
+				OBJ_18 /* Plan.swift */,
+				OBJ_19 /* User.swift */,
+				OBJ_20 /* model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		OBJ_21 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_22 /* PlanManager */,
+				OBJ_27 /* WeatherReporter */,
+				OBJ_32 /* module.swift */,
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1184,7 +1350,11 @@
 			path = .build/checkouts/Fortify/Sources/Fortify;
 			sourceTree = SOURCE_ROOT;
 		};
+<<<<<<< HEAD
 		OBJ_5 = {
+=======
+		OBJ_5 /*  */ = {
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			isa = PBXGroup;
 			children = (
 				76A3A42C22E43EB300FCB77C /* config.plist */,
@@ -1200,6 +1370,10 @@
 				OBJ_185 /* install_knp.sh */,
 				OBJ_186 /* gitignore.txt */,
 			);
+<<<<<<< HEAD
+=======
+			name = "";
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			sourceTree = "<group>";
 		};
 		OBJ_52 /* Just */ = {
@@ -1350,7 +1524,10 @@
 		OBJ_9 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				76C4C84D22E44EC5001DAAD8 /* Actor */,
+=======
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 				OBJ_10 /* DomainSelector */,
 				OBJ_15 /* Recognizer */,
 			);
@@ -1805,7 +1982,11 @@
 				English,
 				en,
 			);
+<<<<<<< HEAD
 			mainGroup = OBJ_5;
+=======
+			mainGroup = OBJ_5 /*  */;
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			productRefGroup = OBJ_166 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1863,8 +2044,11 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_192 /* AppTests.swift in Sources */,
+<<<<<<< HEAD
 				76C4C85022E44EDB001DAAD8 /* datehelper.swift in Sources */,
 				76A3A43122E4455F00FCB77C /* stackplanmodule.swift in Sources */,
+=======
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1873,7 +2057,10 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_234 /* domainselector.swift in Sources */,
+<<<<<<< HEAD
 				76C4C85122E44EDB001DAAD8 /* datehelper.swift in Sources */,
+=======
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 				OBJ_235 /* ds_onedomain.swift in Sources */,
 				OBJ_236 /* ds_simple.swift in Sources */,
 				OBJ_237 /* ds_stack.swift in Sources */,
@@ -1892,7 +2079,10 @@
 				OBJ_250 /* module.swift in Sources */,
 				OBJ_251 /* bot.swift in Sources */,
 				OBJ_252 /* extensions.swift in Sources */,
+<<<<<<< HEAD
 				76A3A43222E4455F00FCB77C /* stackplanmodule.swift in Sources */,
+=======
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2020,6 +2210,7 @@
 				OBJ_416 /* Query.swift in Sources */,
 				OBJ_417 /* Schema.swift in Sources */,
 				OBJ_418 /* Setter.swift in Sources */,
+<<<<<<< HEAD
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2118,6 +2309,106 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+=======
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_426 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_427 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_431 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_432 /* SQLiteObjc.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_439 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_440 /* DemoServer.swift in Sources */,
+				OBJ_441 /* Errno.swift in Sources */,
+				OBJ_442 /* Files.swift in Sources */,
+				OBJ_443 /* HttpParser.swift in Sources */,
+				OBJ_444 /* HttpRequest.swift in Sources */,
+				OBJ_445 /* HttpResponse.swift in Sources */,
+				OBJ_446 /* HttpRouter.swift in Sources */,
+				OBJ_447 /* HttpServer.swift in Sources */,
+				OBJ_448 /* HttpServerIO.swift in Sources */,
+				OBJ_449 /* MimeTypes.swift in Sources */,
+				OBJ_450 /* Process.swift in Sources */,
+				OBJ_451 /* Scopes.swift in Sources */,
+				OBJ_452 /* Socket+File.swift in Sources */,
+				OBJ_453 /* Socket+Server.swift in Sources */,
+				OBJ_454 /* Socket.swift in Sources */,
+				OBJ_455 /* String+BASE64.swift in Sources */,
+				OBJ_456 /* String+File.swift in Sources */,
+				OBJ_457 /* String+Misc.swift in Sources */,
+				OBJ_458 /* String+SHA1.swift in Sources */,
+				OBJ_459 /* WebSockets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_465 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_466 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_470 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_471 /* viber.swift in Sources */,
+				OBJ_472 /* viberapi.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_485 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_486 /* AppleSystemLogDestination.swift in Sources */,
+				OBJ_487 /* AutoRotatingFileDestination.swift in Sources */,
+				OBJ_488 /* BaseDestination.swift in Sources */,
+				OBJ_489 /* BaseQueuedDestination.swift in Sources */,
+				OBJ_490 /* ConsoleDestination.swift in Sources */,
+				OBJ_491 /* DestinationProtocol.swift in Sources */,
+				OBJ_492 /* FileDestination.swift in Sources */,
+				OBJ_493 /* TestDestination.swift in Sources */,
+				OBJ_494 /* DispatchQueue+XCGAdditions.swift in Sources */,
+				OBJ_495 /* URL+XCGAdditions.swift in Sources */,
+				OBJ_496 /* DevFilter.swift in Sources */,
+				OBJ_497 /* FileNameFilter.swift in Sources */,
+				OBJ_498 /* FilterProtocol.swift in Sources */,
+				OBJ_499 /* TagFilter.swift in Sources */,
+				OBJ_500 /* UserInfoFilter.swift in Sources */,
+				OBJ_501 /* ANSIColorLogFormatter.swift in Sources */,
+				OBJ_502 /* Base64LogFormatter.swift in Sources */,
+				OBJ_503 /* LogFormatterProtocol.swift in Sources */,
+				OBJ_504 /* PrePostFixLogFormatter.swift in Sources */,
+				OBJ_505 /* XcodeColorsLogFormatter.swift in Sources */,
+				OBJ_506 /* HelperFunctions.swift in Sources */,
+				OBJ_507 /* LogDetails.swift in Sources */,
+				OBJ_508 /* UserInfoHelpers.swift in Sources */,
+				OBJ_509 /* XCGLogger.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_517 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 				OBJ_518 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2157,12 +2448,21 @@
 			isa = PBXTargetDependency;
 			target = "chatbot::Bot" /* Bot */;
 			targetProxy = 76A3A42122E43E5E00FCB77C /* PBXContainerItemProxy */;
+<<<<<<< HEAD
 		};
 		OBJ_216 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Fortify::Fortify" /* Fortify */;
 			targetProxy = 76A3A42222E43E5E00FCB77C /* PBXContainerItemProxy */;
 		};
+=======
+		};
+		OBJ_216 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Fortify::Fortify" /* Fortify */;
+			targetProxy = 76A3A42222E43E5E00FCB77C /* PBXContainerItemProxy */;
+		};
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 		OBJ_218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "XCGLogger::XCGLogger" /* XCGLogger */;
@@ -2192,12 +2492,21 @@
 			isa = PBXTargetDependency;
 			target = "SQLite.swift::SQLiteObjc" /* SQLiteObjc */;
 			targetProxy = 76A3A42822E43E5E00FCB77C /* PBXContainerItemProxy */;
+<<<<<<< HEAD
 		};
 		OBJ_261 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Fortify::Fortify" /* Fortify */;
 			targetProxy = 76A3A40322E43E5E00FCB77C /* PBXContainerItemProxy */;
 		};
+=======
+		};
+		OBJ_261 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Fortify::Fortify" /* Fortify */;
+			targetProxy = 76A3A40322E43E5E00FCB77C /* PBXContainerItemProxy */;
+		};
+>>>>>>> 3bcc0804af7b8aad015475e77f05f7fae24aefee
 		OBJ_262 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "XCGLogger::XCGLogger" /* XCGLogger */;
