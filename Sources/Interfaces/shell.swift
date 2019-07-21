@@ -1,6 +1,7 @@
 import Bot
 import Foundation
 
+/// コンソール上で対話を行うインターフェース
 public class Shell: Interface {
     public static func run() {
         let bot = Bot(userRawId: "Shell.test")

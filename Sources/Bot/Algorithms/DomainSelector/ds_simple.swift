@@ -8,6 +8,7 @@
 import Foundation
 import SQLite
 
+/// 毎ターンドメイン選択を行うドメイン選択器
 open class SimpleDomainSelector: DomainSelector {
     /// 使用するモジュールのリスト
     static let moduleTypeList: [Module.Type] = [

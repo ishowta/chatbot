@@ -11,10 +11,11 @@ extension Encodable {
     }
 }
 
-public struct InterfaceConfig: Codable {
+/// インターフェースに関するコンフィグの定義
+public struct Config: Codable {
     init() {
         let rawConfig = (NSDictionary(contentsOfFile: "./config.plist") ?? NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Interfaces.framework/Resources/config", ofType: "plist")!)) as! [String: [String: Any]]
-        let config = try! JSONDecoder().decode(InterfaceConfig.self, from: JSONSerialization.data(withJSONObject: rawConfig["interfaces"]!))
+        let config = try! JSONDecoder().decode(Config.self, from: JSONSerialization.data(withJSONObject: rawConfig["interfaces"]!))
         self = config
     }
 
@@ -34,8 +35,9 @@ public struct InterfaceConfig: Codable {
     public let viber: ViberConfig
 }
 
-public let config = InterfaceConfig()
+public let config = Config()
 
+/// チャットボットと会話するためのインターフェースのプロトコル
 protocol Interface {
     static func run()
 }

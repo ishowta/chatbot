@@ -8,6 +8,7 @@
 import Foundation
 import SQLite
 
+/// スタック構造を用いてドメインを管理するドメイン選択器
 open class StackDomainSelector: DomainSelector {
     /// 使用するモジュールのリスト
     static let moduleTypeList: [Module.Type] = [

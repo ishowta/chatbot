@@ -8,6 +8,7 @@
 import Foundation
 import SQLite
 
+/// ドメイン選択をせず選んだ一つのモジュールで会話する
 open class OneDomainDomainSelector: DomainSelector {
     /// 使用するモジュール
     var module: Module

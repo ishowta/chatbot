@@ -2,6 +2,9 @@ import Foundation
 import Regex
 import SQLite
 
+/// 予定を管理してくれるモジュール
+///
+/// 予定の登録、変更、削除、表示ができる
 final class PlanManager: StackPlanModule {
     let db: Connection
 

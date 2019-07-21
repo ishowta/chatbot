@@ -36,6 +36,7 @@ extension String {
     }
 }
 
+/// 格構造解析器を用いて言語理解を行うためのヘルパー
 class CaseAnylysis {
     /// 述語のリストを得る
     ///

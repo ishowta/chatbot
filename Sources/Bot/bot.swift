@@ -5,12 +5,19 @@ open class Bot {
     /// 対話相手のID
     public let userId: Int
 
-    static let cannotUnderstandMessage = ["どういうこと？"]
+    /// ユーザーメッセージに全く応対できなかったときに返す最終手段のメッセージ
+    static let cannotUnderstandMessage = ["すみません。理解できません。"]
 
+    /// Botで用いるDB
     let db = try! Connection("./db.sqlite3")
+
+    /// ユーザーDB
     let Users = Table("Users")
+
+    /// 予定DB
     let Plans = Table("Plans")
 
+    /// ドメイン選択器
     let domainSelector: DomainSelector
 
     /// 初期化

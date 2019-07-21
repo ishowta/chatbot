@@ -1,6 +1,7 @@
 import Foundation
 import SQLite
 
+/// DBモデルのプロトコル
 protocol Model {
     var id: Int? { get }
     static func create(db: Connection, table: Table)

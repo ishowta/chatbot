@@ -2,6 +2,9 @@ import Foundation
 import Regex
 import SQLite
 
+/// 天気を教えてくれるモジュール
+///
+/// 最小構成のテストモジュールのためランダムに天気を返すだけ
 final class WeatherReporter: StackPlanModule {
     let db: Connection
 

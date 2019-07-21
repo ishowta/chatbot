@@ -5,6 +5,13 @@ import Just
 import Swifter
 import Viber
 
+/// Viber APIを用いてViberのユーザーと会話するインターフェース
+///
+/// - サーバーはhttpsであることが必要。テスト環境ならngrokなどが使える。
+///
+/// - 様々なメッセージを送受信できるが、現在対応しているのはTextMessageのみ。
+///
+/// - Viber REST APIのラッパーのViberモジュールを使う。詳しくはViber REST APIのドキュメントに書かれている。
 public class ViberBot: Interface {
     static let viber = Viber(token: config.viber.token, name: config.viber.name)
     
