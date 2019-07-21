@@ -20,10 +20,7 @@
 ## Install or Update package
 ### XCode
 1. (Edit Package.swift)
-1. Generate xcode project
-     - `swift package generate-xcodeproj`
-1. Append resources
-     - `ruby add_resource.rb chatbot.xcodeproj config.plist Bot Interfaces`
+1. `./update.sh`
 ### Swift command line
 1. (Edit Package.swift)
 1. `swift build`
@@ -33,7 +30,6 @@
 
 ## Documents
 - `./make_doc.sh`
-- Open `./Docs/***/index.html`
 
 ## Tree
 ```bash
@@ -53,7 +49,7 @@
 │   │   │   │   └── ds_stack.swift # スタックでドメインを管理する
 │   │   │   ├── Generator # 言語生成のアルゴリズム
 │   │   │   └── Recognizer # 言語理解のアルゴリズム
-│   │   │       └── case_analysis.swift # 格解析を使った言語理解	
+│   │   │       ├── case_analysis.swift # 格解析を使った言語理解	
 │   │   ├── Models # 内部で用いるDBのモデル
 │   │   │   ├── Plan.swift # Plan Managerで使う予定モデル
 │   │   │   ├── User.swift # ユーザーを記憶するユーザーモデル
@@ -64,8 +60,8 @@
 │   │   │   │   ├── pm_actor.swift
 │   │   │   │   ├── pm_generator.swift
 │   │   │   │   └── pm_recognizer.swift
-│   │   │   ├── WeatherReporter # 天気レポートモジュール（動く最低限の実装）
-│   │   │   │   ├── weatherreporter.swift
+│   │   │   ├── WeatherReporter # 天気レポートモジュール
+│   │   │   │   ├── weatherreporter.swift
 │   │   │   │   ├── wr_actor.swift
 │   │   │   │   ├── wr_generator.swift
 │   │   │   │   └── wr_recognizer.swift
@@ -98,8 +94,14 @@
 ├── install_knp.sh # KNP(構文・意味解析器)のインストールスクリプト
 ├── make_doc.sh # ドキュメントを作成するスクリプト
 └── requirements.txt # Pythonライブラリーのリスト
+
+
 ```
 
 ## Reference
 - [Viber REST API](https://developers.viber.com/docs/api/rest-bot-api/)
-- [KNP](http://nlp.ist.i.kyoto-u.ac.jp/index.php?KNP)
+
+## Todo
+- ViberAPIの未実装の部分を書く
+- KNPのSwiftラッパーを書く
+- Viber InterfaceがSIGINTに反応してくれないのを治す
