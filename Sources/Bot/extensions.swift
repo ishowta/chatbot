@@ -11,17 +11,17 @@ public struct Config: Codable {
         let config = try! JSONDecoder().decode(Config.self, from: JSONSerialization.data(withJSONObject: rawConfig["bot"]!))
         self = config
     }
-
+    
     /// ドメイン選択器のリスト
     public enum DomainStrategy: String, Codable {
         case OneDomain
         case Simple
         case Stack
     }
-
+    
     /// どのドメイン選択器を用いるか
     public let domainStrategy: DomainStrategy
-
+    
     /// SimpleDomainSelectorを使う場合に使用するドメイン
     public let domain: String
 }
@@ -30,7 +30,7 @@ public let config = Config()
 
 extension AnySequence where Element == Row {
     internal func decode<T: Codable>() -> [T] {
-        return self.map { row in
+        return map { row in
             try! row.decode()
         }
     }

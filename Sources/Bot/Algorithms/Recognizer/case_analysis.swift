@@ -51,7 +51,7 @@ class CaseAnylysis {
     /// - Returns: マッチする述語が存在するか
     func match(_ pred: PythonObject, _ predList: [String]) -> Bool {
         guard let normalizedPred = String(pred.features.get("正規化代表表記", Python.None)) else { return false }
-        return normalizedPred.components(separatedBy: "/").filter { predList.contains($0) }.count > 0
+        return normalizedPred.split(separator: "/").filter { pred in predList.contains(where: { $0 == pred }) }.count > 0
     }
 
     /// 基準となるタグの下にあるタグを集める
@@ -196,8 +196,8 @@ class CaseAnylysis {
     func extractDate(_ whenTags: [PythonObject]) -> String? {
         let allWhenTags = gatherTag(whenTags)
         for tag in allWhenTags {
-            if tag.features.contains("NE"), String(tag.features["NE"])!.components(separatedBy: ":")[0] == "DATE" {
-                return String(tag.features["NE"])!.components(separatedBy: ":")[1]
+            if tag.features.contains("NE"), String(tag.features["NE"])!.split(separator: ":")[0] == "DATE" {
+                return String(String(tag.features["NE"])!.split(separator: ":")[1])
             }
         }
         return nil
@@ -213,10 +213,10 @@ class CaseAnylysis {
         var hour = ""
         for tag in allWhenTags {
             if tag.features.contains("カウンタ"), tag.features["カウンタ"] == "分" {
-                minute = String(tag.features["正規化代表表記"])!.components(separatedBy: "/")[0] + "分"
+                minute = String(tag.features["正規化代表表記"])!.split(separator: "/")[0] + "分"
             }
             if tag.features.contains("カウンタ"), tag.features["カウンタ"] == "時" {
-                hour = String(tag.features["正規化代表表記"])!.components(separatedBy: "/")[0] + "時"
+                hour = String(tag.features["正規化代表表記"])!.split(separator: "/")[0] + "時"
             }
         }
         let time = hour + minute
