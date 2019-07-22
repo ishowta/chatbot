@@ -41,3 +41,54 @@ func dump<T>(_ value: T) -> String {
     dump(value, to: &tmp)
     return tmp
 }
+
+// Too bad extension. Bad I think it is the best way.
+extension String {
+    subscript(index: Int) -> Character {
+        return self[self.index(self.startIndex, offsetBy: index)]
+    }
+    
+    subscript(bounds: CountableRange<Int>) -> Substring {
+        return self[index(at: bounds.lowerBound)..<index(at: bounds.upperBound)]
+    }
+    
+    subscript(bounds: CountableClosedRange<Int>) -> Substring {
+        return self[index(at: bounds.lowerBound)...index(at: bounds.upperBound)]
+    }
+    
+    subscript(bounds: PartialRangeUpTo<Int>) -> Substring {
+        return self[..<index(at: bounds.upperBound)]
+    }
+    
+    subscript(bounds: PartialRangeThrough<Int>) -> Substring {
+        return self[...index(at: bounds.upperBound)]
+    }
+    
+    subscript(bounds: PartialRangeFrom<Int>) -> Substring {
+        return self[index(at: bounds.lowerBound)...]
+    }
+    
+    subscript(bounds: CountableRange<Int>) -> String {
+        return String(self[index(at: bounds.lowerBound)..<index(at: bounds.upperBound)])
+    }
+    
+    subscript(bounds: CountableClosedRange<Int>) -> String {
+        return String(self[index(at: bounds.lowerBound)...index(at: bounds.upperBound)])
+    }
+    
+    subscript(bounds: PartialRangeUpTo<Int>) -> String {
+        return String(self[..<index(at: bounds.upperBound)])
+    }
+    
+    subscript(bounds: PartialRangeThrough<Int>) -> String {
+        return String(self[...index(at: bounds.upperBound)])
+    }
+    
+    subscript(bounds: PartialRangeFrom<Int>) -> String {
+        return String(self[index(at: bounds.lowerBound)...])
+    }
+    
+    func index(at offset: Int) -> String.Index {
+        return index(startIndex, offsetBy: offset)
+    }
+}
