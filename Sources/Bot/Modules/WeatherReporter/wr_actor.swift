@@ -4,14 +4,9 @@ import SQLite
 
 extension WeatherReporter {
     class Actor {
-        let weatherReporter: Module
-        let db: Connection
         let calendar = Calendar(identifier: .gregorian)
 
-        init(_ planManager: WeatherReporter) {
-            self.weatherReporter = planManager
-            self.db = planManager.db
-        }
+        init() {}
 
         func parseDate(_ rawDate: String) -> DateComponents? {
             let dateFormater = DateFormatter()

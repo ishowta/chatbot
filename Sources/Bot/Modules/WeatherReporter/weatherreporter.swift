@@ -12,20 +12,17 @@ final class WeatherReporter: StackPlanModule {
 
     var planStack: [DomainPlan] = []
 
-    let recognizer = Recognizer()
+    let recognizer: Recognizer
     func recognize(_ message: String) -> DialogueAct? {
         return recognizer.run(message)
     }
 
-    var actor: Actor?
+    var actor: Actor
     func act(_ domainPlan: inout DomainPlan, _ dialogueAct: DialogueAct) -> (EitherDialogueActForBot, Bool)? {
-        if actor == nil {
-            actor = Actor(self)
-        }
-        return actor!.run(domainPlan, dialogueAct)
+        return actor.run(domainPlan, dialogueAct)
     }
 
-    let generator = Generator()
+    let generator: Generator
     func generate(_ dialogueAct: DialogueActForBot) -> [String] {
         return generator.run(dialogueAct)
     }
@@ -33,6 +30,9 @@ final class WeatherReporter: StackPlanModule {
     init(db: Connection, userId: Int) {
         self.db = db
         self.userId = userId
+        self.recognizer = Recognizer()
+        self.actor = Actor()
+        self.generator = Generator()
     }
 
     enum Weather: CaseIterable {
