@@ -1,4 +1,4 @@
-# chatbot
+# Chatbot
 
 ## Require
 - swift
@@ -44,12 +44,12 @@
 │   │   │   │   └── datehelper.swift # Actorで使う日付に関するUtil
 │   │   │   ├── DomainSelector # ドメイン選択のアルゴリズム
 │   │   │   │   ├── domainselector.swift # ドメイン選択のプロトコル
-│   │   │   │   ├── ds_onedomain.swift # ドメインを一つだけ使う（選択しない）
+│   │   │   │   ├── ds_onedomain.swift # ドメインを一つだけ使う
 │   │   │   │   ├── ds_simple.swift # １ターンごとに選択する
 │   │   │   │   └── ds_stack.swift # スタックでドメインを管理する
 │   │   │   ├── Generator # 言語生成のアルゴリズム
 │   │   │   └── Recognizer # 言語理解のアルゴリズム
-│   │   │       ├── case_analysis.swift # 格解析を使った言語理解	
+│   │   │       └── case_analysis.swift # 格解析を使った言語理解	
 │   │   ├── Models # 内部で用いるDBのモデル
 │   │   │   ├── Plan.swift # Plan Managerで使う予定モデル
 │   │   │   ├── User.swift # ユーザーを記憶するユーザーモデル
@@ -100,8 +100,4 @@
 
 ## Reference
 - [Viber REST API](https://developers.viber.com/docs/api/rest-bot-api/)
-
-## Todo
-- ViberAPIの未実装の部分を書く
-- KNPのSwiftラッパーを書く
-- Viber InterfaceがSIGINTに反応してくれないのを治す
+- [KNP](http://nlp.ist.i.kyoto-u.ac.jp/index.php?KNP)
