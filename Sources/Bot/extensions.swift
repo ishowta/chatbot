@@ -1,8 +1,8 @@
 import Foundation
 import SQLite
-import XCGLogger
+import SwiftyBeaver
 
-let logger = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.bot", includeDefaultDestinations: true)
+let logger = SwiftyBeaver.self
 
 /// チャットボットに関するコンフィグの定義
 public struct Config: Codable {

@@ -1,7 +1,13 @@
 import Foundation
-import XCGLogger
+import SwiftyBeaver
 
-let logger = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.interface", includeDefaultDestinations: true)
+fileprivate func setupLogger() -> SwiftyBeaver.Type {
+        let logger = SwiftyBeaver.self
+        let console = ConsoleDestination()
+        logger.addDestination(console)
+        return SwiftyBeaver.self
+}
+let logger = setupLogger()
 
 extension Encodable {
     func toDictionary() -> [String: Any]? {

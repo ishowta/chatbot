@@ -21,7 +21,7 @@ let package = Package(
         .package(url: "https://github.com/sharplet/Regex.git", from: "2.1.0"),
 
         // Logging
-        .package(url: "https://github.com/DaveWoodCom/XCGLogger.git", from: "7.0.0"),
+	.package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver.git", from: "1.7.0"),
 
         // HTTP Server
         .package(url: "https://github.com/httpswift/swifter.git", from: "1.4.5"),
@@ -34,9 +34,9 @@ let package = Package(
         .package(url: "https://github.com/kinironote/Fortify", from: "1.1.1")
     ],
     targets: [
-        .target(name: "Bot", dependencies: ["SQLite", "PythonKit", "Regex", "XCGLogger", "Fortify"]),
-        .target(name: "Viber", dependencies: ["Swifter", "Just", "XCGLogger"], path: "Sources/Library/Viber"),
-        .target(name: "Interfaces", dependencies: ["Bot", "Swifter", "Just", "XCGLogger", "Viber"]),
+        .target(name: "Bot", dependencies: ["SQLite", "PythonKit", "Regex", "SwiftyBeaver", "Fortify"]),
+        .target(name: "Viber", dependencies: ["Swifter", "Just", "SwiftyBeaver"], path: "Sources/Library/Viber"),
+        .target(name: "Interfaces", dependencies: ["Bot", "Swifter", "Just", "SwiftyBeaver", "Viber"]),
         .target(name: "Run", dependencies: ["Interfaces"]),
         .testTarget(name: "AppTests", dependencies: ["Interfaces", "Bot", "Viber"])
     ]

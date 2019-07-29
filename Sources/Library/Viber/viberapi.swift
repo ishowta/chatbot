@@ -1,16 +1,9 @@
-//
-//  viberapi.swift
-//  AppTests
-//
-//  Created by Clelia on 2019/07/20.
-//
-
 import Foundation
 import Just
 import Swifter
-import XCGLogger
+import SwiftyBeaver
 
-let logger = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.viber.viberapi", includeDefaultDestinations: true)
+let logger = SwiftyBeaver.self
 
 extension Encodable {
     func toDictionary() -> [String: Any]? {

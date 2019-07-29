@@ -1,14 +1,4 @@
-//
-//  viberAPI.swift
-//  chatbot
-//
-//  Created by Clelia on 2019/07/19.
-//
-
 import Foundation
-import XCGLogger
-
-let log = XCGLogger(identifier: "jp.ac.tsukuba.cs.mibel.chatbot.viber.viber", includeDefaultDestinations: true)
 
 extension Sequence {
     func any(_ f: (Element) -> Bool) -> Bool {
