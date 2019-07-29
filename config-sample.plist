@@ -5,7 +5,7 @@
 	<key>bot</key>
 	<dict>
 		<key>domainStrategy</key>
-		<string>`OneDomain`, `Simple`, `Stuck`</string>
+		<string>`OneDomain`, `Simple`, `Stack`</string>
 		<key>domain</key>
 		<string>select domain if you pick `OneDomain`</string>
 	</dict>
