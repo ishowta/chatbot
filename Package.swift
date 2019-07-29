@@ -4,7 +4,11 @@ import PackageDescription
 let package = Package(
     name: "chatbot",
     products: [
-        .library(name: "chatbot", targets: ["Run"])
+        .library(
+		name: "chatbot",
+		type: .dynamic,
+		targets: ["Run"]
+	)
     ],
     dependencies: [
         // SQLite query builder

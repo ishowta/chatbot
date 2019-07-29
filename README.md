@@ -15,7 +15,7 @@
     - `pip3 install -r requirements.txt`
 1. Install KNP
     - `./install_knp.sh /path/to/install`
-1. Copy `./config-sample.plist` to `./config.plist` and fill it
+1. Copy `config-sample.plist` to `config.plist` and fill it
 
 ## Install or Update package
 ### XCode
@@ -28,8 +28,13 @@
 ## Run
 - `swift run`
 
+## REPL
+1. `swift build`
+1. `swift -I .build/debug -L .build/debug -lchatbot`
+
 ## Documents
 - `./make_doc.sh`
+- open `docs/`
 
 ## Tree
 ```bash
