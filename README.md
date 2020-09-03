@@ -13,8 +13,8 @@
 1. Install required libraries
 1. Install Python library
     - `pip3 install -r requirements.txt`
-1. Install KNP
-    - `./install_knp.sh /path/to/install`
+1. Build & Install KNP
+    - `./build_and_install_knp.sh /path/to/install`
 1. Copy `config-sample.plist` to `config.plist` and fill it
 
 ## Install or Update package

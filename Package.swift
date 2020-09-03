@@ -21,14 +21,14 @@ let package = Package(
         .package(url: "https://github.com/sharplet/Regex.git", from: "2.1.0"),
 
         // Logging
-	.package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver.git", from: "1.7.0"),
+	    .package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver.git", from: "1.8.4"),
 
         // HTTP Server
-        .package(url: "https://github.com/httpswift/swifter.git", from: "1.4.5"),
+        .package(url: "https://github.com/httpswift/swifter.git", from: "1.4.7"),
 
         // HTTP Client
         // .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0-beta.6")
-        .package(url: "https://github.com/micahbenn/Just.git", .branch("master")),
+        .package(url: "https://github.com/dduan/Just", from: "0.8.0"),
 
         // Error library
         .package(url: "https://github.com/kinironote/Fortify", from: "1.1.1")

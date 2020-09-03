@@ -33,8 +33,10 @@ extension PlanManager {
                 return nil
             }
             logger.debug("Parsed message: \n\(drawParsedText(message))")
+
             guard let parentPredTag = getParentPredicate(text: message) else { return nil }
             let tag = parentPredTag
+
             if match(parentPredTag, ["する", "登録"]) {
                 /* 登録要求
                  例：ショッピングを一週間後で登録して
@@ -124,13 +126,12 @@ extension PlanManager {
                 /* 時間の情報提供
                  例：３月３日の5時 / 五週間後
                  */
-                if let whenTags = getPredWhenTags(message, tag) {
-                    return .TellAct(
-                        title: nil,
-                        date: extractDate(whenTags),
-                        time: extractTime(whenTags)
-                    )
-                }
+                let whenTags: [PythonObject] = message.tag_list().map{$0}
+                return .TellAct(
+                    title: nil,
+                    date: extractDate(whenTags),
+                    time: extractTime(whenTags)
+                )
             }
 
             logger.info("メッセージ \"\(rawMessage)\" が認識されませんでした")

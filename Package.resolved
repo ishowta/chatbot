@@ -30,11 +30,11 @@
       },
       {
         "package": "Just",
-        "repositoryURL": "https://github.com/micahbenn/Just.git",
+        "repositoryURL": "https://github.com/dduan/Just",
         "state": {
-          "branch": "master",
-          "revision": "2276f93ab9e1764b608805af6ad18305e3fb4881",
-          "version": null
+          "branch": null,
+          "revision": "1824bf84cf52d11d69ae20cfb89f0ce5bffa5650",
+          "version": "0.8.0"
         }
       },
       {
@@ -47,7 +47,7 @@
         }
       },
       {
-        "package": "PythonTool",
+        "package": "PythonKit",
         "repositoryURL": "https://github.com/pvieito/PythonKit.git",
         "state": {
           "branch": "master",
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/httpswift/swifter.git",
         "state": {
           "branch": null,
-          "revision": "57faa5da31c02e035e43e8189f7ae7e8fb7ddc68",
-          "version": "1.4.6"
+          "revision": "8b5afb48ae64d4f729f0489ddcfe09c62b9c3687",
+          "version": "1.4.7"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/SwiftyBeaver/SwiftyBeaver.git",
         "state": {
           "branch": null,
-          "revision": "ad66cc41c5d8acbd63d9dcdc9d3609f152e08ed1",
-          "version": "1.7.0"
+          "revision": "2f2b7ac0b675e9d0ac696758f15bbff97eb65a31",
+          "version": "1.8.4"
         }
       }
     ]
